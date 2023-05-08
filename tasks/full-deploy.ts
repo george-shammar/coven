@@ -274,12 +274,12 @@ task('full-deploy', 'deploys the entire Lens Protocol').setAction(async ({}, hre
   );
 
   // Whitelist the currency
-  console.log('\n\t-- Whitelisting Currency in Module Globals --');
-  await waitForTx(
-    moduleGlobals
-      .connect(governance)
-      .whitelistCurrency(currency.address, true, { nonce: governanceNonce++ })
-  );
+  // console.log('\n\t-- Whitelisting Currency in Module Globals --');
+  // await waitForTx(
+  //   moduleGlobals
+  //     .connect(governance)
+  //     .whitelistCurrency(currency.address, true, { nonce: governanceNonce++ })
+  // );
 
   // Whitelist the profile creation proxy
   console.log('\n\t-- Whitelisting Profile Creation Proxy --');
