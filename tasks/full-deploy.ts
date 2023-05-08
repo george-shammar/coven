@@ -34,7 +34,7 @@ const LENS_HUB_NFT_NAME = 'Lens Protocol Profiles';
 const LENS_HUB_NFT_SYMBOL = 'LPP';
 
 // task('full-deploy', 'deploys the entire Lens Protocol').setAction(async ({}, hre) => {
-  async function main() {
+async function main() {
   // Note that the use of these signers is a placeholder and is not meant to be used in
   // production.
   const ethers = hre.ethers;
@@ -322,3 +322,11 @@ const LENS_HUB_NFT_SYMBOL = 'LPP';
   fs.writeFileSync('addresses.json', json, 'utf-8');
 };
 // });
+
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+
