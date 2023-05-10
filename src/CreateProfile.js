@@ -41,21 +41,36 @@ const CreateProfile = () => {
         } 
     }
 
+    // async function createProfile() {
+    //   console.log("start")
+    //   const provider = new ethers.providers.Web3Provider(window.ethereum);
+    //   const signer = provider.getSigner();
+    //   const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
+    //   console.log("=====contract call=====")
+    //   const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
+    //       const inputStruct = {
+    //          to: walletAddress,
+    //          handle: 'shammar',
+    //          imageURI: 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX',
+    //          followModule: ZERO_ADDRESS,
+    //          followModuleInitData: [],
+    //          followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
+    //        };
+    //        console.log("hello")
+    //   const transaction = await contract.createProfile(inputStruct);
+    //   console.log(transaction)
+    //   console.log("=====end=====")
+    // }
 
-async function createProfile() {
 
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
-  const signer = provider.getSigner();
+    async function createProfile() {
 
-  const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
-  
-    try {
-      const transaction = await contract.whitelistProfileCreator(walletAddress, true);
-      const receipt = await transaction.wait();
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
 
-        if (receipt.status === 0) {
-            throw new Error("Transaction failed");
-        } else {
+        try {
+          const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
           const inputStruct = {
             to: walletAddress,
             handle: 'shammar',
@@ -65,46 +80,33 @@ async function createProfile() {
             followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
           };
           
-          const profileTx = await createProfile(inputStruct);
-          console.log(profileTx);
+          const transaction = await contract.createProfile(inputStruct);
+          const receipt = await transaction.wait();
+            if (receipt.status === 0) {
+                throw new Error("Transaction failed");
+            } else {
+            
+            }
+        } catch (error) {
+          if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
+            return;
+          }
+          console.error(error);
+        } finally {
+    
         }
-   
+    
+      // await waitForTx(lensHub.connect(user).createProfile(inputStruct));
+    
+      // console.log(`Total supply (should be 1): ${await lensHub.totalSupply()}`);
+      // console.log(
+      //   `Profile owner: ${await lensHub.ownerOf(1)}, user address (should be the same): ${user.address}`
+      // );
+      // console.log(`Profile ID by handle: ${await lensHub.getProfileIdByHandle('zer0dot')}`);
+      };
 
-      
-      
-    } catch (error) {
-      if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
-        return;
-      }
-      console.error(error);
-    } finally {
 
-    }
-  
-  // // const [governance, user] = await initEnv(hre);
-  // // // 
-  // const addrs = getAddrs();
-  // const lensHub = LensHub__factory.connect(addrs['lensHub proxy'], signer);
-  // console.log(lensHub);
-  // await waitForTx(lensHub.whitelistProfileCreator(user.address, true));
 
-  // const inputStruct: CreateProfileDataStruct = {
-  //   to: user.address,
-  //   handle: 'zer0dot',
-  //   imageURI: 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX',
-  //   followModule: ZERO_ADDRESS,
-  //   followModuleInitData: [],
-  //   followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
-  // };
-
-  // await waitForTx(lensHub.connect(user).createProfile(inputStruct));
-
-  // console.log(`Total supply (should be 1): ${await lensHub.totalSupply()}`);
-  // console.log(
-  //   `Profile owner: ${await lensHub.ownerOf(1)}, user address (should be the same): ${user.address}`
-  // );
-  // console.log(`Profile ID by handle: ${await lensHub.getProfileIdByHandle('zer0dot')}`);
-  };
 
   return (
     <div>
@@ -117,10 +119,9 @@ async function createProfile() {
             ) : (
           <div className="profile" onClick={connectWalletPressed}>Connect</div>
             )}
-      <p onClick={createProfile}>Sign Up</p>
+      <p  className="profile" onClick={createProfile}>Sign Up</p>
     </div>
   )
 }
-// });
 
 export default CreateProfile;
