@@ -1,7 +1,6 @@
 import '@nomiclabs/hardhat-ethers';
 import { hexlify, keccak256, RLP } from 'ethers/lib/utils';
 import fs from 'fs';
-import { task } from 'hardhat/config';
 import {
   LensHub__factory,
   ApprovalFollowModule__factory,
@@ -26,8 +25,8 @@ import {
   ProfileFollowModule__factory,
   RevertFollowModule__factory,
   ProfileCreationProxy__factory,
-} from '../typechain-types';
-import { deployContract, waitForTx } from './helpers/utils';
+} from '../src/typechain-types';
+import { deployContract, waitForTx } from '../src/helpers/utils';
 
 const TREASURY_FEE_BPS = 50;
 const LENS_HUB_NFT_NAME = 'Lens Protocol Profiles';

@@ -1,10 +1,12 @@
 import logo from './logo.svg';
+import createProfile from './utils/createProfile.ts';
+
 import './App.css';
 
 function App() {
 
   function create_profile() {
-    console.log("working")
+    createProfile();
   }
 
   return (
