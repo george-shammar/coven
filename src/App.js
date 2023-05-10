@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import createProfile from './utils/createProfile.ts';
+import createProfile from './utils/createProfile';
 
 import './App.css';
 

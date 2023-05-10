@@ -20,6 +20,7 @@ import { ethers } from "ethers";
 async function createProfile() {
   console.log("working");
   const provider = new ethers.providers.Web3Provider(window.ethereum);
+  console.log(provider);
   // const [governance, user] = await initEnv(hre);
   // // 
   // const addrs = getAddrs();
