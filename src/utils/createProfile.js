@@ -6,15 +6,15 @@ import { connectWallet, getCurrentWalletConnected } from "./wallet";
 const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
 async function createProfile() {
-  console.log("working");
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const signer = provider.getSigner();
 
   const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
   
     try {
+      const {userAddress} = await getCurrentWalletConnected();
       // const transaction = await contract.whitelistProfileCreator(signer.address, true);
-      
+      console.log(userAddress);
       
     } catch (error) {
       if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
