@@ -40,6 +40,7 @@ import CustomToggle from "../../../dropdowns";
 
 const Header = () => {
   const [walletAddress, setWallet] = useState("");
+  
   const minisidebar = () => {
     document.getElementsByTagName("ASIDE")[0].classList.toggle("sidebar-mini");
   };
