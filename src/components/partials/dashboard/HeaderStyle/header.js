@@ -1294,7 +1294,7 @@ const Header = () => {
                 </Card>
               </Dropdown.Menu>
             </Dropdown>
-              {/* <Nav.Item as="li" className="d-lg-none">
+              <Nav.Item as="li" className="d-lg-none">
               <Link
                 to="/dashboard/app/notification"
                 className="d-flex align-items-center"
@@ -1302,7 +1302,10 @@ const Header = () => {
                 <i className="material-symbols-outlined">notifications</i>
                 <span className="mobile-text  ms-3 d-none">Notifications</span>
               </Link>
-  </Nav.Item>*/}
+              </Nav.Item>
+
+                <span className="material-symbols-outlined">account_balance_wallet</span>
+
               <Nav.Item className="nav-item d-none d-lg-none">
                 <Link
                   to="#"
