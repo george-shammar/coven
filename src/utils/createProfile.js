@@ -1,6 +1,7 @@
 import { ethers } from "ethers";
 import LensHubAddress from "../contracts/contract-address.json";
 import LensHubArtifact from "../contracts/LensHub.json";
+import { connectWallet, getCurrentWalletConnected } from "./wallet";
 
 const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
