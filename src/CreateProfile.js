@@ -91,7 +91,7 @@ async function createProfile() {
 
   return (
     <div>
-      <p>Sign Up</p>
+      <p onClick={createProfile}>Sign Up</p>
     </div>
   )
 }
