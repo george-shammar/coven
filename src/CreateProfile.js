@@ -41,28 +41,6 @@ const CreateProfile = () => {
         } 
     }
 
-    // async function createProfile() {
-    //   console.log("start")
-    //   const provider = new ethers.providers.Web3Provider(window.ethereum);
-    //   const signer = provider.getSigner();
-    //   const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
-    //   console.log("=====contract call=====")
-    //   const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
-    //       const inputStruct = {
-    //          to: walletAddress,
-    //          handle: 'shammar',
-    //          imageURI: 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX',
-    //          followModule: ZERO_ADDRESS,
-    //          followModuleInitData: [],
-    //          followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
-    //        };
-    //        console.log("hello")
-    //   const transaction = await contract.createProfile(inputStruct);
-    //   console.log(transaction)
-    //   console.log("=====end=====")
-    // }
-
-
     async function createProfile() {
 
       const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -95,14 +73,6 @@ const CreateProfile = () => {
         } finally {
     
         }
-    
-      // await waitForTx(lensHub.connect(user).createProfile(inputStruct));
-    
-      // console.log(`Total supply (should be 1): ${await lensHub.totalSupply()}`);
-      // console.log(
-      //   `Profile owner: ${await lensHub.ownerOf(1)}, user address (should be the same): ${user.address}`
-      // );
-      // console.log(`Profile ID by handle: ${await lensHub.getProfileIdByHandle('zer0dot')}`);
       };
 
 
