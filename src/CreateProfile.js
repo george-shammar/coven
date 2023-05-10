@@ -52,6 +52,12 @@ async function createProfile() {
     try {
       const transaction = await contract.whitelistProfileCreator(walletAddress, true);
       const receipt = await transaction.wait();
+
+        if (receipt.status === 0) {
+            throw new Error("Transaction failed");
+        } else {
+          setStatus("Fresh Mage minted successfully! Reveal your Mage with the button below to start the game");
+        }
       console.log(transaction);
 
       const inputStruct = {
