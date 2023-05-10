@@ -4,8 +4,6 @@ import LensHubAddress from "../../../../contracts/contract-address.json";
 import LensHubArtifact from "../../../../contracts/LensHub.json";
 import { connectWallet, getCurrentWalletConnected } from "../../../../utils/wallet";
 
-const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
-
 import {
   Dropdown,
   Nav,
@@ -37,6 +35,8 @@ import user16 from "../../../../assets/images/page-img/01.jpg";
 //Componets
 import CustomToggle from "../../../dropdowns";
 // import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
+
+const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
 const Header = () => {
   const [walletAddress, setWallet] = useState("");
