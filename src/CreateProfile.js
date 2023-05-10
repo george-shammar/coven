@@ -1,11 +1,50 @@
+import { useEffect, useState } from "react";
 import { ethers } from "ethers";
-import LensHubAddress from "../contracts/contract-address.json";
-import LensHubArtifact from "../contracts/LensHub.json";
-import { connectWallet, getCurrentWalletConnected } from "./wallet";
+import LensHubAddress from "./contracts/contract-address.json";
+import LensHubArtifact from "./contracts/LensHub.json";
+import { connectWallet, getCurrentWalletConnected } from "./utils/wallet";
 
 const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
+const CreateProfile = () => {
+
+
+  const [walletAddress, setWallet] = useState("");
+  const [status, setStatus] = useState("");
+
+    useEffect(() => {
+      (async() => {
+        const {address} = await getCurrentWalletConnected();
+        setWallet(address)
+    
+        addWalletListener();
+      }) ()
+    }, []);
+
+    // connect wallet 
+    const connectWalletPressed = async () => {
+        const walletResponse = await connectWallet();
+        setWallet(walletResponse.address);
+    };
+
+    // wallet listener to update UI when wallet's state changes, 
+    // such as when the user disconnects or switches accounts.
+    function addWalletListener() {
+        if (window.ethereum) {
+        window.ethereum.on("accountsChanged", (accounts) => {
+            if (accounts.length > 0) {
+            setWallet(accounts[0]);
+          
+            } else {
+            setWallet("");
+            }
+        });
+        } 
+    }
+
+
 async function createProfile() {
+
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const signer = provider.getSigner();
 
@@ -48,7 +87,14 @@ async function createProfile() {
   //   `Profile owner: ${await lensHub.ownerOf(1)}, user address (should be the same): ${user.address}`
   // );
   // console.log(`Profile ID by handle: ${await lensHub.getProfileIdByHandle('zer0dot')}`);
-};
+  };
+
+  return (
+    <div>
+      <p>Sign Up</p>
+    </div>
+  )
+}
 // });
 
-export default createProfile;
+export default CreateProfile;
