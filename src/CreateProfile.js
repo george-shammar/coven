@@ -4,11 +4,11 @@ import LensHubAddress from "./contracts/contract-address.json";
 import LensHubArtifact from "./contracts/LensHub.json";
 import { connectWallet, getCurrentWalletConnected } from "./utils/wallet";
 
+import './App.css';
+
 const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
 const CreateProfile = () => {
-
-
   const [walletAddress, setWallet] = useState("");
   const [status, setStatus] = useState("");
 
@@ -91,6 +91,7 @@ async function createProfile() {
 
   return (
     <div>
+      <p className="profile">Connect</p>
       <p onClick={createProfile}>Sign Up</p>
     </div>
   )
