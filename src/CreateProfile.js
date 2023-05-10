@@ -65,8 +65,10 @@ async function createProfile() {
             followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
           };
           
+          const profileTx = await createProfile(inputStruct);
+          console.log(profileTx);
         }
-      console.log(transaction);
+   
 
       
       
