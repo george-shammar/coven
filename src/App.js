@@ -1,19 +1,27 @@
-import logo from './logo.svg';
-import CreateProfile from './CreateProfile';
+//router
+// import IndexRouters from "./router/index"
 
-import './App.css';
+//scss
+import "./assets/scss/socialv.scss"
+import "./assets/scss/customizer.scss"
 
-function App() {
+
+// Redux Selector / Action
+import { useDispatch } from 'react-redux';
+
+// import state selectors
+import { setSetting } from './store/setting/actions'
+
+
+function App(props) {
+  const dispatch = useDispatch()
+  dispatch(setSetting())
+
 
   return (
     <div className="App">
-      <header className="App-header profile">
-        <img src={logo} className="App-logo" alt="logo" />
-    
-          {/* <p className='profile' onClick={create_profile}>create profile</p> */}
-          <CreateProfile/>
-      
-      </header>
+      {/* <IndexRouters /> */}
+      {props.children}
     </div>
   );
 }
