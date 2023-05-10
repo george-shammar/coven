@@ -71,6 +71,41 @@ const Header = () => {
       } 
   }
 
+  async function createProfile() {
+
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
+
+      try {
+        const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
+        const inputStruct = {
+          to: walletAddress,
+          handle: 'shammar',
+          imageURI: 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX',
+          followModule: ZERO_ADDRESS,
+          followModuleInitData: [],
+          followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
+        };
+        
+        const transaction = await contract.createProfile(inputStruct);
+        const receipt = await transaction.wait();
+          if (receipt.status === 0) {
+              throw new Error("Transaction failed");
+          } else {
+          console.log(receipt.status)
+          }
+      } catch (error) {
+        if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
+          return;
+        }
+        console.error(error);
+      } finally {
+  
+      }
+    };
+
+
   const minisidebar = () => {
     document.getElementsByTagName("ASIDE")[0].classList.toggle("sidebar-mini");
   };
