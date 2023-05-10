@@ -63,7 +63,7 @@ const CreateProfile = () => {
             if (receipt.status === 0) {
                 throw new Error("Transaction failed");
             } else {
-            
+            console.log(receipt.status)
             }
         } catch (error) {
           if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
