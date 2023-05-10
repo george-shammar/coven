@@ -1,28 +1,13 @@
 import { ethers } from "ethers";
-import { LensHub__factory } from '../typechain-types/factories/LensHub__factory'
-const {fs} = require('fs');
-// task('create-profile', 'creates a profile').setAction(async ({}, hre) => {
-// async function initEnv(hre: HardhatRuntimeEnvironment): Promise<SignerWithAddress[]> {
-//     const ethers = hre.ethers; // This allows us to access the hre (Hardhat runtime environment)'s injected ethers instance easily
-  
-//     const accounts = await ethers.getSigners(); // This returns an array of the default signers connected to the hre's ethers instance
-//     const governance = accounts[1];
-//     const treasury = accounts[2];
-//     const user = accounts[3];
-  
-//     return [governance, treasury, user];
-// }
-
-export function getAddrs() {
-  const json = fs.readFileSync('addresses.json', 'utf8');
-  const addrs = JSON.parse(json);
-  return addrs;
-}
+import LensHubAddress from "../contracts/contract-address.json";
+import LensHubArtifact from "../contracts/LensHub.json";
 
 async function createProfile() {
   console.log("working");
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const signer = provider.getSigner();
+
+  const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
   
   // // const [governance, user] = await initEnv(hre);
   // // // 
