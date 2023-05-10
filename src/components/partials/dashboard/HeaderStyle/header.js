@@ -504,12 +504,12 @@ const Header = () => {
             </div>
 
             <ul className="navbar-nav navbar-list">
-              {/* <Nav.Item as="li">
+              <Nav.Item as="li">
                 <Link to="/" className="d-flex align-items-center">
                   <i className="material-symbols-outlined">home</i>
                   <span className="mobile-text d-none ms-3">Sign Up</span>
                 </Link>
-              </Nav.Item> */}
+              </Nav.Item>
               <Nav.Item as="li" className="d-lg-none">
               <div className="iq-search-bar device-search  position-relative">
               <form
@@ -934,143 +934,6 @@ const Header = () => {
                 >
                   <span className="material-symbols-outlined">account_balance_wallet</span>
                 </Dropdown.Toggle>
-                <Dropdown.Menu className="sub-drop sub-drop-large">
-                  <Card className="shadow-none m-0">
-                    <Card.Header className="d-flex justify-content-between bg-primary">
-                      <div className="header-title">
-                        <h5 className="mb-0 text-white">Friend Request</h5>
-                      </div>
-                      <small className="badge  bg-light text-dark ">4</small>
-                    </Card.Header>
-                    <Card.Body className="p-0">
-                      <div className="iq-friend-request">
-                        <div className="iq-sub-card iq-sub-card-big d-flex align-items-center justify-content-between">
-                          <div className="d-flex align-items-center">
-                            <Image
-                              className="avatar-40 rounded"
-                              src={user1}
-                              alt=""
-                              loading="lazy"
-                            />
-                            <div className="ms-3">
-                              <h6 className="mb-0 ">Jaques Amole</h6>
-                              <p className="mb-0">40 friends</p>
-                            </div>
-                          </div>
-                          <div className="d-flex align-items-center">
-                            <Link
-                              to="#"
-                              className="me-3 btn btn-primary rounded"
-                            >
-                              Confirm
-                            </Link>
-                            <Link
-                              to="#"
-                              className="me-3 btn btn-secondary rounded"
-                            >
-                              Delete Request
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="iq-friend-request">
-                        <div className="iq-sub-card iq-sub-card-big d-flex align-items-center justify-content-between">
-                          <div className="d-flex align-items-center">
-                            <Image
-                              className="avatar-40 rounded"
-                              src={user2}
-                              alt=""
-                              loading="lazy"
-                            />
-                            <div className="ms-3">
-                              <h6 className="mb-0 ">Lucy Tania</h6>
-                              <p className="mb-0">12 friends</p>
-                            </div>
-                          </div>
-                          <div className="d-flex align-items-center">
-                            <Link
-                              to="#"
-                              className="me-3 btn btn-primary rounded"
-                            >
-                              Confirm
-                            </Link>
-                            <Link
-                              to="#"
-                              className="me-3 btn btn-secondary rounded"
-                            >
-                              Delete Request
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="iq-friend-request">
-                        <div className="iq-sub-card iq-sub-card-big d-flex align-items-center justify-content-between">
-                          <div className="d-flex align-items-center">
-                            <Image
-                              className="avatar-40 rounded"
-                              src={user3}
-                              alt=""
-                              loading="lazy"
-                            />
-                            <div className=" ms-3">
-                              <h6 className="mb-0 ">Manny Petty</h6>
-                              <p className="mb-0">3 friends</p>
-                            </div>
-                          </div>
-                          <div className="d-flex align-items-center">
-                            <Link
-                              to="#"
-                              className="me-3 btn btn-primary rounded"
-                            >
-                              Confirm
-                            </Link>
-                            <Link
-                              to="#"
-                              className="me-3 btn btn-secondary rounded"
-                            >
-                              Delete Request
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="iq-friend-request">
-                        <div className="iq-sub-card iq-sub-card-big d-flex align-items-center justify-content-between">
-                          <div className="d-flex align-items-center">
-                            <Image
-                              className="avatar-40 rounded"
-                              src={user4}
-                              alt=""
-                              loading="lazy"
-                            />
-                            <div className="ms-3">
-                              <h6 className="mb-0 ">Marsha Mello</h6>
-                              <p className="mb-0">15 friends</p>
-                            </div>
-                          </div>
-                          <div className="d-flex align-items-center">
-                            <Link
-                              to="#"
-                              className="me-3 btn btn-primary rounded"
-                            >
-                              Confirm
-                            </Link>
-                            <Link
-                              to="#"
-                              className="me-3 btn btn-secondary rounded"
-                            >
-                              Delete Request
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="text-center">
-                        <Link to="#" className=" btn text-primary">
-                          View More Request
-                        </Link>
-                      </div>
-                    </Card.Body>
-                  </Card>
-                </Dropdown.Menu>
               </Dropdown>
 
               <Dropdown as="li" className="nav-item ">
