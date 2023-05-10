@@ -4,8 +4,6 @@ import LensHubAddress from "./contracts/contract-address.json";
 import LensHubArtifact from "./contracts/LensHub.json";
 import { connectWallet, getCurrentWalletConnected } from "./utils/wallet";
 
-import './App.css';
-
 const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
 const CreateProfile = () => {
@@ -89,7 +87,7 @@ const CreateProfile = () => {
             ) : (
           <div className="profile" onClick={connectWalletPressed}>Connect</div>
             )}
-      <p  className="profile" onClick={createProfile}>Sign Up</p>
+      <p onClick={createProfile}>Sign Up</p>
     </div>
   )
 }
