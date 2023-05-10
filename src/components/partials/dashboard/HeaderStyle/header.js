@@ -580,8 +580,9 @@ const Header = () => {
             <ul className="navbar-nav navbar-list">
               <Nav.Item as="li">
                 <Link to="/" className="d-flex align-items-center">
-                  <i className="material-symbols-outlined">home</i>
-                  <span className="mobile-text d-none ms-3">Sign Up</span>
+                  {/* <i className="material-symbols-outlined">home</i> */}
+                  {/* <span className="mobile-text d-none ms-3">Sign Up</span> */}
+                  <p>Sign Up</p>
                 </Link>
               </Nav.Item>
               <Nav.Item as="li" className="d-lg-none">
