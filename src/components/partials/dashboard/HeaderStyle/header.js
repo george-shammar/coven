@@ -1006,7 +1006,7 @@ const Header = () => {
                   as={CustomToggle}
                   variant="d-flex align-items-center"
                 >
-                  <span className="material-symbols-outlined">account_balance_wallet</span>
+                  <span className="material-symbols-outlined" onClick={connectWalletPressed}>account_balance_wallet</span>
                 </Dropdown.Toggle>
               </Dropdown>
 
