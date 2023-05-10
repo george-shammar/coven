@@ -56,18 +56,19 @@ async function createProfile() {
         if (receipt.status === 0) {
             throw new Error("Transaction failed");
         } else {
-          setStatus("Fresh Mage minted successfully! Reveal your Mage with the button below to start the game");
+          const inputStruct = {
+            to: walletAddress,
+            handle: 'shammar',
+            imageURI: 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX',
+            followModule: ZERO_ADDRESS,
+            followModuleInitData: [],
+            followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
+          };
+          
         }
       console.log(transaction);
 
-      const inputStruct = {
-          to: walletAddress,
-          handle: 'shammar',
-          imageURI: 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX',
-          followModule: ZERO_ADDRESS,
-          followModuleInitData: [],
-          followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
-      };
+      
       
     } catch (error) {
       if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
