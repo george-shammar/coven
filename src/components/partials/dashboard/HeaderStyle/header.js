@@ -926,7 +926,383 @@ const Header = () => {
               </Modal>
             </div>
               </Nav.Item>
-           
+              <Dropdown as="li" className="nav-item">
+                <Dropdown.Toggle
+                  href="/"
+                  as={CustomToggle}
+                  variant="d-flex align-items-center"
+                >
+                  <span className="material-symbols-outlined">group</span>
+                </Dropdown.Toggle>
+                <Dropdown.Menu className="sub-drop sub-drop-large">
+                  <Card className="shadow-none m-0">
+                    <Card.Header className="d-flex justify-content-between bg-primary">
+                      <div className="header-title">
+                        <h5 className="mb-0 text-white">Friend Request</h5>
+                      </div>
+                      <small className="badge  bg-light text-dark ">4</small>
+                    </Card.Header>
+                    <Card.Body className="p-0">
+                      <div className="iq-friend-request">
+                        <div className="iq-sub-card iq-sub-card-big d-flex align-items-center justify-content-between">
+                          <div className="d-flex align-items-center">
+                            <Image
+                              className="avatar-40 rounded"
+                              src={user1}
+                              alt=""
+                              loading="lazy"
+                            />
+                            <div className="ms-3">
+                              <h6 className="mb-0 ">Jaques Amole</h6>
+                              <p className="mb-0">40 friends</p>
+                            </div>
+                          </div>
+                          <div className="d-flex align-items-center">
+                            <Link
+                              to="#"
+                              className="me-3 btn btn-primary rounded"
+                            >
+                              Confirm
+                            </Link>
+                            <Link
+                              to="#"
+                              className="me-3 btn btn-secondary rounded"
+                            >
+                              Delete Request
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="iq-friend-request">
+                        <div className="iq-sub-card iq-sub-card-big d-flex align-items-center justify-content-between">
+                          <div className="d-flex align-items-center">
+                            <Image
+                              className="avatar-40 rounded"
+                              src={user2}
+                              alt=""
+                              loading="lazy"
+                            />
+                            <div className="ms-3">
+                              <h6 className="mb-0 ">Lucy Tania</h6>
+                              <p className="mb-0">12 friends</p>
+                            </div>
+                          </div>
+                          <div className="d-flex align-items-center">
+                            <Link
+                              to="#"
+                              className="me-3 btn btn-primary rounded"
+                            >
+                              Confirm
+                            </Link>
+                            <Link
+                              to="#"
+                              className="me-3 btn btn-secondary rounded"
+                            >
+                              Delete Request
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="iq-friend-request">
+                        <div className="iq-sub-card iq-sub-card-big d-flex align-items-center justify-content-between">
+                          <div className="d-flex align-items-center">
+                            <Image
+                              className="avatar-40 rounded"
+                              src={user3}
+                              alt=""
+                              loading="lazy"
+                            />
+                            <div className=" ms-3">
+                              <h6 className="mb-0 ">Manny Petty</h6>
+                              <p className="mb-0">3 friends</p>
+                            </div>
+                          </div>
+                          <div className="d-flex align-items-center">
+                            <Link
+                              to="#"
+                              className="me-3 btn btn-primary rounded"
+                            >
+                              Confirm
+                            </Link>
+                            <Link
+                              to="#"
+                              className="me-3 btn btn-secondary rounded"
+                            >
+                              Delete Request
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="iq-friend-request">
+                        <div className="iq-sub-card iq-sub-card-big d-flex align-items-center justify-content-between">
+                          <div className="d-flex align-items-center">
+                            <Image
+                              className="avatar-40 rounded"
+                              src={user4}
+                              alt=""
+                              loading="lazy"
+                            />
+                            <div className="ms-3">
+                              <h6 className="mb-0 ">Marsha Mello</h6>
+                              <p className="mb-0">15 friends</p>
+                            </div>
+                          </div>
+                          <div className="d-flex align-items-center">
+                            <Link
+                              to="#"
+                              className="me-3 btn btn-primary rounded"
+                            >
+                              Confirm
+                            </Link>
+                            <Link
+                              to="#"
+                              className="me-3 btn btn-secondary rounded"
+                            >
+                              Delete Request
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <Link to="#" className=" btn text-primary">
+                          View More Request
+                        </Link>
+                      </div>
+                    </Card.Body>
+                  </Card>
+                </Dropdown.Menu>
+              </Dropdown>
+
+              <Dropdown as="li" className="nav-item ">
+                <Dropdown.Toggle
+                  href="#"
+                  as={CustomToggle}
+                  variant="search-toggle d-flex align-items-center"
+                >
+                  <i className="material-symbols-outlined">notifications</i>
+                </Dropdown.Toggle>
+                <Dropdown.Menu className="sub-drop">
+                  <Card className="shadow-none m-0">
+                    <Card.Header className="d-flex justify-content-between bg-primary">
+                      <div className="header-title bg-primary">
+                        <h5 className="mb-0 text-white ">All Notifications</h5>
+                      </div>
+                      <small className="badge  bg-light text-dark">4</small>
+                    </Card.Header>
+                    <Card.Body className="p-0">
+                      <Link to="#" className="iq-sub-card">
+                        <div className="d-flex align-items-center">
+                          <div className="">
+                            <Image
+                              className="avatar-40 rounded"
+                              src={user1}
+                              alt=""
+                              loading="lazy"
+                            />
+                          </div>
+                          <div className="ms-3 w-100">
+                            <h6 className="mb-0 ">Emma Watson Bni</h6>
+                            <div className="d-flex justify-content-between align-items-center">
+                              <p className="mb-0">95 MB</p>
+                              <small className="float-right font-size-12">
+                                Just Now
+                              </small>
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                      <Link to="#" className="iq-sub-card">
+                        <div className="d-flex align-items-center">
+                          <div className="">
+                            <Image
+                              className="avatar-40 rounded"
+                              src={user2}
+                              alt=""
+                              loading="lazy"
+                            />
+                          </div>
+                          <div className="ms-3 w-100">
+                            <h6 className="mb-0 ">New customer is join</h6>
+                            <div className="d-flex justify-content-between align-items-center">
+                              <p className="mb-0">Cyst Bni</p>
+                              <small className="float-right font-size-12">
+                                5 days ago
+                              </small>
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                      <Link to="#" className="iq-sub-card">
+                        <div className="d-flex align-items-center">
+                          <div className="">
+                            <Image
+                              className="avatar-40 rounded"
+                              src={user3}
+                              alt=""
+                              loading="lazy"
+                            />
+                          </div>
+                          <div className="ms-3 w-100">
+                            <h6 className="mb-0 ">Two customer is left</h6>
+                            <div className="d-flex justify-content-between align-items-center">
+                              <p className="mb-0">Cyst Bni</p>
+                              <small className="float-right font-size-12">
+                                2 days ago
+                              </small>
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                      <Link to="#" className="iq-sub-card">
+                        <div className="d-flex align-items-center">
+                          <div className="">
+                            <Image
+                              className="avatar-40 rounded"
+                              src={user4}
+                              alt=""
+                              loading="lazy"
+                            />
+                          </div>
+                          <div className="w-100 ms-3">
+                            <h6 className="mb-0 ">New Mail from Fenny</h6>
+                            <div className="d-flex justify-content-between align-items-center">
+                              <p className="mb-0">Cyst Bni</p>
+                              <small className="float-right font-size-12">
+                                3 days ago
+                              </small>
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    </Card.Body>
+                  </Card>
+                </Dropdown.Menu>
+              </Dropdown>
+              <Dropdown as="li" className="nav-item">
+              <Dropdown.Toggle
+                href="#"
+                as={CustomToggle}
+                variant="d-flex align-items-center"
+              >
+                <i className="material-symbols-outlined">mail</i>
+                <span className="mobile-text d-none ms-3">
+                  Message
+                </span>
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="sub-drop">
+                <Card className="shadow-none m-0">
+                  <Card.Header className="d-flex justify-content-between bg-primary">
+                    <div className="header-title bg-primary">
+                      <h5 className="mb-0 text-white">All Message</h5>
+                    </div>
+                    <small className="badge bg-light text-dark">4</small>
+                  </Card.Header>
+                  <Card.Body className="p-0 ">
+                    <Link to="#" className="iq-sub-card">
+                      <div className="d-flex  align-items-center">
+                        <div className="">
+                          <Image
+                            className="avatar-40 rounded"
+                            src={user1}
+                            alt=""
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className=" w-100 ms-3">
+                          <h6 className="mb-0 ">Bni Emma Watson</h6>
+                          <small className="float-left font-size-12">
+                            13 Jun
+                          </small>
+                        </div>
+                      </div>
+                    </Link>
+                    <Link to="#" className="iq-sub-card">
+                      <div className="d-flex align-items-center">
+                        <div className="">
+                          <Image
+                            className="avatar-40 rounded"
+                            src={user2}
+                            alt=""
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="ms-3">
+                          <h6 className="mb-0 ">Lorem Ipsum Watson</h6>
+                          <small className="float-left font-size-12">
+                            20 Apr
+                          </small>
+                        </div>
+                      </div>
+                    </Link>
+                    <Link to="#" className="iq-sub-card">
+                      <div className="d-flex align-items-center">
+                        <div className="">
+                          <Image
+                            className="avatar-40 rounded"
+                            src={user3}
+                            alt=""
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="ms-3">
+                          <h6 className="mb-0 ">Why do we use it?</h6>
+                          <small className="float-left font-size-12">
+                            30 Jun
+                          </small>
+                        </div>
+                      </div>
+                    </Link>
+                    <Link to="#" className="iq-sub-card">
+                      <div className="d-flex align-items-center">
+                        <div className="">
+                          <Image
+                            className="avatar-40 rounded"
+                            src={user4}
+                            alt=""
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="ms-3">
+                          <h6 className="mb-0 ">Variations Passages</h6>
+                          <small className="float-left font-size-12">
+                            12 Sep
+                          </small>
+                        </div>
+                      </div>
+                    </Link>
+                    <Link to="#" className="iq-sub-card">
+                      <div className="d-flex align-items-center">
+                        <div className="">
+                          <Image
+                            className="avatar-40 rounded"
+                            src={user5}
+                            alt=""
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="ms-3">
+                          <h6 className="mb-0 ">
+                            Lorem Ipsum generators
+                          </h6>
+                          <small className="float-left font-size-12">
+                            5 Dec
+                          </small>
+                        </div>
+                      </div>
+                    </Link>
+                  </Card.Body>
+                </Card>
+              </Dropdown.Menu>
+            </Dropdown>
+              {/* <Nav.Item as="li" className="d-lg-none">
+              <Link
+                to="/dashboard/app/notification"
+                className="d-flex align-items-center"
+              >
+                <i className="material-symbols-outlined">notifications</i>
+                <span className="mobile-text  ms-3 d-none">Notifications</span>
+              </Link>
+  </Nav.Item>*/}
               <Nav.Item className="nav-item d-none d-lg-none">
                 <Link
                   to="#"
