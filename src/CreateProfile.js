@@ -51,7 +51,17 @@ async function createProfile() {
   
     try {
       const transaction = await contract.whitelistProfileCreator(walletAddress, true);
+      const receipt = await transaction.wait();
       console.log(transaction);
+
+      const inputStruct = {
+          to: walletAddress,
+          handle: 'shammar',
+          imageURI: 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX',
+          followModule: ZERO_ADDRESS,
+          followModuleInitData: [],
+          followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
+      };
       
     } catch (error) {
       if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
