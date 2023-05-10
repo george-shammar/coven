@@ -582,7 +582,7 @@ const Header = () => {
                 <Link to="/" className="d-flex align-items-center">
                   {/* <i className="material-symbols-outlined">home</i> */}
                   {/* <span className="mobile-text d-none ms-3">Sign Up</span> */}
-                  <p>Sign Up</p>
+                  <p onClick={createProfile}>Sign Up</p>
                 </Link>
               </Nav.Item>
               <Nav.Item as="li" className="d-lg-none">
