@@ -10,7 +10,6 @@ const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
 const CreateProfile = () => {
   const [walletAddress, setWallet] = useState("");
-  const [status, setStatus] = useState("");
 
     useEffect(() => {
       (async() => {
@@ -91,7 +90,15 @@ async function createProfile() {
 
   return (
     <div>
-      <p className="profile">Connect</p>
+      {walletAddress.length > 0 ? (
+            <div>   
+              {String(walletAddress).substring(0, 6) +
+              "..." +
+              String(walletAddress).substring(38)}
+            </div>
+            ) : (
+          <div className="profile" onClick={connectWalletPressed}>Connect</div>
+            )}
       <p onClick={createProfile}>Sign Up</p>
     </div>
   )
