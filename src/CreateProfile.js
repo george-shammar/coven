@@ -50,9 +50,8 @@ async function createProfile() {
   const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
   
     try {
-      const {userAddress} = await getCurrentWalletConnected();
-      // const transaction = await contract.whitelistProfileCreator(signer.address, true);
-      console.log(userAddress);
+      const transaction = await contract.whitelistProfileCreator(walletAddress, true);
+      console.log(transaction);
       
     } catch (error) {
       if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
