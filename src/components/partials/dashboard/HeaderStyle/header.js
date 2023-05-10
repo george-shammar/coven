@@ -932,7 +932,7 @@ const Header = () => {
                   as={CustomToggle}
                   variant="d-flex align-items-center"
                 >
-                  <span className="material-symbols-outlined">group</span>
+                  <span className="material-symbols-outlined">account_balance_wallet</span>
                 </Dropdown.Toggle>
                 <Dropdown.Menu className="sub-drop sub-drop-large">
                   <Card className="shadow-none m-0">
@@ -1304,21 +1304,9 @@ const Header = () => {
               </Link>
               </Nav.Item>
 
-                <span className="material-symbols-outlined">account_balance_wallet</span>
+              
 
-              <Nav.Item className="nav-item d-none d-lg-none">
-                <Link
-                  to="#"
-                  className="dropdown-toggle d-flex align-items-center"
-                  id="mail-drop-1"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i className="material-symbols-outlined">mail</i>
-                  <span className="mobile-text  ms-3">Message</span>
-                </Link>
-              </Nav.Item>
+              
               <Dropdown as="li" className="nav-item user-dropdown">
                 <Dropdown.Toggle
                   href="#"
