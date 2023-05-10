@@ -8,6 +8,17 @@ async function createProfile() {
   const signer = provider.getSigner();
 
   const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
+
+  try {
+    
+  } catch (error) {
+    if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
+      return;
+    }
+    console.error(error);
+  } finally {
+
+  }
   
   // // const [governance, user] = await initEnv(hre);
   // // // 
