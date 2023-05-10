@@ -1,13 +1,34 @@
+import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
+import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { LensHub__factory } from '../typechain-types';
 import { CreateProfileDataStruct } from '../typechain-types/LensHub';
-import { waitForTx, initEnv, getAddrs, ZERO_ADDRESS } from '../helpers/utils';
+//import { waitForTx, initEnv, getAddrs, ZERO_ADDRESS } from '../helpers/utils';
+const { fs } = require('fs');
 
 // task('create-profile', 'creates a profile').setAction(async ({}, hre) => {
+async function initEnv(hre: HardhatRuntimeEnvironment): Promise<SignerWithAddress[]> {
+    const ethers = hre.ethers; // This allows us to access the hre (Hardhat runtime environment)'s injected ethers instance easily
+  
+    const accounts = await ethers.getSigners(); // This returns an array of the default signers connected to the hre's ethers instance
+    const governance = accounts[1];
+    const treasury = accounts[2];
+    const user = accounts[3];
+  
+    return [governance, treasury, user];
+}
+
+export function getAddrs(): any {
+  const json = fs.readFileSync('addresses.json', 'utf8');
+  const addrs = JSON.parse(json);
+  return addrs;
+}
+
 async function createProfile() {
-  console.log("working profile")
-  // const [governance, , user] = await initEnv(hre);
-  // const addrs = getAddrs();
-  // const lensHub = LensHub__factory.connect(addrs['lensHub proxy'], governance);
+  
+  const [governance, user] = await initEnv(hre);
+  // console.log(governance.address);
+  const addrs = getAddrs();
+  const lensHub = LensHub__factory.connect(addrs['lensHub proxy'], governance);
 
   // await waitForTx(lensHub.whitelistProfileCreator(user.address, true));
 
