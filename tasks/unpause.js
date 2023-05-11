@@ -11,8 +11,8 @@ async function main() {
   const lensHub = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
   // const lensHub = LensHub__factory.connect(addrs['lensHub proxy'], governance);
   console.log(await lensHub.getState());
-  await waitForTx(lensHub.setState(ProtocolState.Unpaused));
-  console.log(await lensHub.getState());
+  // await waitForTx(lensHub.setState(ProtocolState.Unpaused));
+  // console.log(await lensHub.getState());
   };
 // });
 
