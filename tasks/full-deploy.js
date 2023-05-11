@@ -58,6 +58,7 @@ async function main() {
 
   console.log("LensHub address:", lenshub.address);
 
+
   // ================================== *** Collect and Follow deployment *** ================================================
 
   console.log('\n\t-- Deploying Follow & Collect NFT Implementations --');
