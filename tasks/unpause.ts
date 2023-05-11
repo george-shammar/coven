@@ -1,8 +1,8 @@
 const hre = require("hardhat");
 import { ethers } from "ethers";
 // import LensHubAddress from "../../../../contracts/contract-address.json";
-import LensHubArtifact from "../../../../contracts/LensHub.json";
-import LensHubAddress from "../../../../contracts/contract-address.json";
+import LensHubArtifact from "../src/contracts/LensHub.json";
+import LensHubAddress from "../src/contracts/contract-address.json";
 
 async function main() {
   // const [governance] = await initEnv(hre);
