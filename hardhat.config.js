@@ -26,6 +26,10 @@ module.exports = {
   networks: {
     hardhat: {
       chainId: 1337
+    },
+    tBSC: {
+      url: `https://tame-summer-energy.bsc-testnet.discover.quiknode.pro/${API_KEY}/`,
+      accounts: [PRIVATE_KEY]
     }
   },
   solidity: {
