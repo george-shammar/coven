@@ -61,22 +61,23 @@ async function main() {
 
   // ================================== *** Collect and Follow deployment *** ================================================
 
-  console.log('\n\t-- Deploying Follow & Collect NFT Implementations --');
+  // console.log('\n\t-- Deploying Follow & Collect NFT Implementations --');
 
-  const FollowNFT = await ethers.getContractFactory("FollowNFT");
-  const follownft = await FollowNFT.deploy(hubProxyAddress);
-  console.log("FollowNFT address:", follownft.address);
+  // const FollowNFT = await ethers.getContractFactory("FollowNFT");
+  // const follownft = await FollowNFT.deploy(hubProxyAddress);
+  // console.log("FollowNFT address:", follownft.address);
 
-  const CollectNFT = await ethers.getContractFactory("CollectNFT");
-  const collectnft = await CollectNFT.deploy(hubProxyAddress);
-  console.log("CollectNFT address:", collectnft.address);
+  // const CollectNFT = await ethers.getContractFactory("CollectNFT");
+  // const collectnft = await CollectNFT.deploy(hubProxyAddress);
+  // console.log("CollectNFT address:", collectnft.address);
 
 
   //  To save the contract's artifacts and address in the frontend directory
-  saveFrontendFiles(follownft, collectnft, lenshub);
+  saveFrontendFiles(lenshub);
+  // saveFrontendFiles(follownft, collectnft, lenshub);
 }
 
-function saveFrontendFiles(follownft, collectnft, lenshub) {
+function saveFrontendFiles(lenshub) {
   const fs = require("fs");
   const contractsDir = __dirname + "/../src/contracts";
 
@@ -86,23 +87,24 @@ function saveFrontendFiles(follownft, collectnft, lenshub) {
 
   fs.writeFileSync(
     contractsDir + "/contract-address.json",
-    JSON.stringify({ FollowNFT: follownft.address,
-                     CollectNFT: collectnft.address,
-                     LensHub: lenshub.address}, undefined, 2)
+    // JSON.stringify({ FollowNFT: follownft.address,
+    //                  CollectNFT: collectnft.address,
+    //                  LensHub: lenshub.address}, undefined, 2)
+    JSON.stringify({ LensHub: lenshub.address}, undefined, 2)
   );
 
-  const FollowNFTArtifact = artifacts.readArtifactSync("FollowNFT");
-  const CollectNFTArtifact = artifacts.readArtifactSync("CollectNFT");
+  // const FollowNFTArtifact = artifacts.readArtifactSync("FollowNFT");
+  // const CollectNFTArtifact = artifacts.readArtifactSync("CollectNFT");
   const LensHubArtifact = artifacts.readArtifactSync("LensHub");
 
-  fs.writeFileSync(
-    contractsDir + "/FollowNFT.json",
-    JSON.stringify(FollowNFTArtifact, null, 2)
-  );
-  fs.writeFileSync(
-    contractsDir + "/CollectNFT.json",
-    JSON.stringify(CollectNFTArtifact, null, 2)
-  );
+  // fs.writeFileSync(
+  //   contractsDir + "/FollowNFT.json",
+  //   JSON.stringify(FollowNFTArtifact, null, 2)
+  // );
+  // fs.writeFileSync(
+  //   contractsDir + "/CollectNFT.json",
+  //   JSON.stringify(CollectNFTArtifact, null, 2)
+  // );
   fs.writeFileSync(
     contractsDir + "/LensHub.json",
     JSON.stringify(LensHubArtifact, null, 2)
