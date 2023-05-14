@@ -61,15 +61,15 @@ async function main() {
 
   // ================================== *** Collect and Follow deployment *** ================================================
 
-  // console.log('\n\t-- Deploying Follow & Collect NFT Implementations --');
+  console.log('\n\t-- Deploying Follow & Collect NFT Implementations --');
 
-  // const FollowNFT = await ethers.getContractFactory("FollowNFT");
-  // const follownft = await FollowNFT.deploy(hubProxyAddress);
-  // console.log("FollowNFT address:", follownft.address);
+  const FollowNFT = await ethers.getContractFactory("FollowNFT");
+  const follownft = await FollowNFT.deploy(hubProxyAddress);
+  console.log("FollowNFT address:", follownft.address);
 
-  // const CollectNFT = await ethers.getContractFactory("CollectNFT");
-  // const collectnft = await CollectNFT.deploy(hubProxyAddress);
-  // console.log("CollectNFT address:", collectnft.address);
+  const CollectNFT = await ethers.getContractFactory("CollectNFT");
+  const collectnft = await CollectNFT.deploy(hubProxyAddress);
+  console.log("CollectNFT address:", collectnft.address);
 
 
   //  To save the contract's artifacts and address in the frontend directory
