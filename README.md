@@ -51,4 +51,5 @@ See the live application here: [Live Version](https://resonant-druid-87de9c.netl
 ### Local Version
 
 #### Prerequisites
+- You must have node installed on your computer. [Download Node.js](https://nodejs.org/en/)
 - Metamask wallet (Connected to the BSC testnet network)
