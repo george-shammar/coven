@@ -3,6 +3,7 @@ import { ethers } from "ethers";
 import LensHubAddress from "../../../../contracts/contract-address.json";
 import LensHubArtifact from "../../../../contracts/LensHub.json";
 import { connectWallet, getCurrentWalletConnected } from "../../../../utils/wallet";
+import FormWizard from "../../../../views/dashboard/from/form-wizard"
 
 import {
   Dropdown,
@@ -12,6 +13,7 @@ import {
   Container,
   Image,
   Modal,
+  Button
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -40,6 +42,9 @@ const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
 const Header = () => {
   const [walletAddress, setWallet] = useState("");
+  const [show4, setShow4] = useState(false);
+  const handleClose4 = () => setShow4(false);
+  const handleShow4 = () => setShow4(true); 
 
   useEffect(() => {
     (async() => {
@@ -78,7 +83,6 @@ const Header = () => {
     const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
 
       try {
-        console.log(walletAddress);
         const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
         const inputStruct = {
           to: walletAddress,
@@ -584,7 +588,39 @@ const Header = () => {
                 <Link to="/" className="d-flex align-items-center">
                   {/* <i className="material-symbols-outlined">home</i> */}
                   {/* <span className="mobile-text d-none ms-3">Sign Up</span> */}
-                  <p onClick={createProfile}>Sign Up</p>
+                  {/* <p>Sign Up</p>{' '}
+                                <Modal size="lg" show={show4} onHide={handleClose4}>
+                                    <Modal.Header closeButton>
+                                        <Modal.Title>Modal heading</Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>Modal body text goes here.</Modal.Body>
+                                    <Modal.Footer>
+                                        <Button variant="secondary" onClick={handleClose4}>
+                                            Close
+                                        </Button>
+                                        <Button variant="primary" onClick={createProfile}>
+                                            Create
+                                        </Button>
+                                    </Modal.Footer>
+                                </Modal> */}
+                                <Button variant="primary" onClick={handleShow4}>
+                                Sign Up
+                                </Button>{' '}
+                                <Modal size="lg" show={show4} onHide={handleClose4}>
+                                    <Modal.Header closeButton>
+                                        <Modal.Title>Modal heading</Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>A new way to register..</Modal.Body>
+                                    <FormWizard />
+                                    <Modal.Footer>
+                                        <Button variant="secondary" onClick={handleClose4}>
+                                            Close
+                                        </Button>
+                                        <Button variant="primary" onClick={createProfile}>
+                                            Create
+                                        </Button>
+                                    </Modal.Footer>
+                                </Modal>
                 </Link>
               </Nav.Item>
               <Nav.Item as="li" className="d-lg-none">

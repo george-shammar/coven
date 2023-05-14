@@ -12,60 +12,32 @@ const FormWizard = () => {
         <div id='content-page' className='content-page'>
             <Container>
                 <Row>
-                    <Col sm="12">
+                    {/* <Col sm="12">
                         <Card className="position-relative inner-page-bg bg-primary" style={{height: "150px"}}>
                             <div className="inner-page-title">
                                 <h3 className="text-white">Simple Wizard Page</h3>
                                 <p className="text-white">lorem ipsum</p>
                             </div>
                         </Card>
-                    </Col>
+                    </Col> */}
                     <Col sm="12" lg="12">
                         <Card>
                             <Card.Header className="d-flex justify-content-between">
                                 <div className="header-title">
-                                    <h4 className="card-title">Simple Wizard</h4>
+                                    <h4 className="card-title">A new way to register..</h4>
                                 </div>
                             </Card.Header>
                             <Card.Body>
                                 <Form id="form-wizard1" className="text-center mt-3">
-                                    <ul id="top-tab-list" className="p-0 row list-inline">
-                                        <li className={ ` ${show === 'Image' ? 'active done' : ''} ${show === 'Personal' ? 'active done' : ''} ${show === 'Account' ? 'active done' : ''} ${show === 'A' ? 'active ' : ''} col-lg-3 col-md-6 text-start mb-2 active`} id="account">
-                                            <Link to="#">
-                                                <i className="material-symbols-outlined">lock_open</i><span>Account</span>
-                                            </Link>
-                                        </li>
-                                        <li id="personal" className={` ${show === 'Image' ? 'active done' : ''} ${show === 'Personal' ? 'active done' : ''} ${show === 'Account' ? 'active done' : ''} col-lg-3 col-md-6 mb-2 text-start`}>
-                                            <Link to="#">
-                                                <i className="material-symbols-outlined">person</i><span>Personal</span>
-                                            </Link>
-                                        </li>
-                                        <li id="payment" className={` ${show === 'Image' ? 'active done': ''} ${show === 'Personal' ? 'active done' : ''} col-lg-3 col-md-6 mb-2 text-start`}>
-                                            <Link to="#">
-                                                <i className="material-symbols-outlined">photo_camera</i><span>Image</span>
-                                            </Link>
-                                        </li>
-                                        <li id="confirm" className={` ${show === 'Image' ? 'active done' : ''} col-lg-3 col-md-6 mb-2 text-start`}>
-                                            <Link to="#">
-                                                <i className="material-symbols-outlined">done</i><span>Finish</span>
-                                            </Link>
-                                        </li>
-                                    </ul>
+                                   
                                     <fieldset className={`${show === 'A' ? 'd-block' : 'd-none'}`}>
                                         <div className="form-card text-start">
-                                            <Row>
-                                                <div className="col-7">
-                                                    <h3 className="mb-4">Account Information:</h3>
-                                                </div>
-                                                <div className="col-5">
-                                                    <h2 className="steps">Step 1 - 4</h2>
-                                                </div>
-                                            </Row>
+                                           
                                             <Row>
                                                 <Col md="6">
                                                     <Form.Group className="form-group">
-                                                        <Form.Label>Email: *</Form.Label>
-                                                        <Form.Control type="email" name="email" placeholder="Email Id" />
+                                                        <Form.Label>Wallet Address: *</Form.Label>
+                                                        <Form.Control type="email" name="email" placeholder="wallet address..." />
                                                     </Form.Group>
                                                 </Col>
                                                 <Col md="6">
