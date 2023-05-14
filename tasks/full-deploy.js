@@ -73,8 +73,7 @@ async function main() {
 
 
   //  To save the contract's artifacts and address in the frontend directory
-  saveFrontendFiles(lenshub);
-  // saveFrontendFiles(follownft, collectnft, lenshub);
+  saveFrontendFiles(follownft, collectnft, lenshub);
 }
 
 function saveFrontendFiles(lenshub) {
