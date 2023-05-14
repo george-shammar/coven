@@ -23,3 +23,18 @@ See the live application here: [Live Version](https://resonant-druid-87de9c.netl
 
 
 ## Our Solution
+
+
+## Built With
+- Binance Smart Chain
+- Solidity
+- React/Redux
+- JavaScript
+- Typescript
+- IPFS
+- Hardhat
+- Ethers
+- Quicknode
+- HTML5
+- CSS3
+- Bootstrap
