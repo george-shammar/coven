@@ -83,3 +83,8 @@ npm start
 ```
 
 The application should open up at http://localhost:3000/ 
+
+## Usage
+
+- You may explore the entire application. 
+NB: This is only an MVP, most part of the application are still being actively developed so placeholders are still being used in some parts of the website given the limited time. Significant development effort is expected to continue after the Hackathon.
