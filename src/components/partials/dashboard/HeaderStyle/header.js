@@ -81,7 +81,7 @@ const Header = () => {
         console.log(walletAddress);
         const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
         const inputStruct = {
-          to: "0x9fc778c7af07474a84d25d3c2031200eb168ebf5",
+          to: walletAddress,
           handle: 'shammar',
           imageURI: 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX',
           followModule: ZERO_ADDRESS,
