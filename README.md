@@ -17,7 +17,10 @@ See the live application here: [Live Version](https://resonant-druid-87de9c.netl
 
 
 ## Screenshots
-
+- Fully rsponsive UI on any device
+![screenshot](./land.png)
+![screenshot](./profile.png)
+![screenshot](./profile-dark.png)
 
 ## Problem Statement
 
