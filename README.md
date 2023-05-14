@@ -99,3 +99,6 @@ NB: This is only an MVP, most part of the application are still being actively d
 ### Next Release (features)
 - Sustainable economic model to incentivize the following activities:
 1. Content creation
+2. Content engagements (likes, mirror)
+
+- Complete social graph implementation
