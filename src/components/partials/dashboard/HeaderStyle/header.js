@@ -147,7 +147,7 @@ const Header = () => {
                   className="logo-title d-none d-sm-block"
                   data-setting="app_name"
                 >
-                  CoveN
+                  CovveN
                 </h3>
               </Link>
               <Link
