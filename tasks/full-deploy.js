@@ -95,14 +95,14 @@ function saveFrontendFiles(lenshub) {
   const CollectNFTArtifact = artifacts.readArtifactSync("CollectNFT");
   const LensHubArtifact = artifacts.readArtifactSync("LensHub");
 
-  // fs.writeFileSync(
-  //   contractsDir + "/FollowNFT.json",
-  //   JSON.stringify(FollowNFTArtifact, null, 2)
-  // );
-  // fs.writeFileSync(
-  //   contractsDir + "/CollectNFT.json",
-  //   JSON.stringify(CollectNFTArtifact, null, 2)
-  // );
+  fs.writeFileSync(
+    contractsDir + "/FollowNFT.json",
+    JSON.stringify(FollowNFTArtifact, null, 2)
+  );
+  fs.writeFileSync(
+    contractsDir + "/CollectNFT.json",
+    JSON.stringify(CollectNFTArtifact, null, 2)
+  );
   fs.writeFileSync(
     contractsDir + "/LensHub.json",
     JSON.stringify(LensHubArtifact, null, 2)
