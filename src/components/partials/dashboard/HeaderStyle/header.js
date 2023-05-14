@@ -78,9 +78,10 @@ const Header = () => {
     const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
 
       try {
+        console.log(walletAddress);
         const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
         const inputStruct = {
-          to: walletAddress,
+          to: "0x9fc778c7af07474a84d25d3c2031200eb168ebf5",
           handle: 'shammar',
           imageURI: 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX',
           followModule: ZERO_ADDRESS,
@@ -88,7 +89,7 @@ const Header = () => {
           followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
         };
        
-        // console.log(inputStruct);
+        console.log(inputStruct.to);
         const transaction = await contract.createProfile(inputStruct);
         const receipt = await transaction.wait();
           if (receipt.status === 0) {
