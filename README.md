@@ -60,3 +60,26 @@ See the live application here: [Live Version](https://resonant-druid-87de9c.netl
 ```
 git clone https://github.com/george-shammar/coven.git
 ```
+
+The URL or SSH are the links copied from the step above.
+
+- If you don't have git installed, you can download this project and unzip it.
+- Go to the "Code" tab and click on "Downlaod Zip"
+- Change directory into the folder the application is saved. From the terminal, run:
+```
+cd directory
+```
+Where "directory" is the name of the folder.
+
+- Once you have the local copy in your desired folder, go back to your terminal and run:
+```
+npm install
+```
+This command installs all the dependencies of the application.
+
+To open up the application in your browser, run:
+```
+npm start
+```
+
+The application should open up at http://localhost:3000/ 
