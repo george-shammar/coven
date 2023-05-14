@@ -18,6 +18,11 @@ See the live application here: [Live Version](https://resonant-druid-87de9c.netl
 
 ## Screenshots
 ![screenshot](./landing.png)
+![screenshot](./profile.png)
+
+#### Fully responsive on all devices
+
+![screenshot](./mobile.png)
 
 ## Problem Statement
 
