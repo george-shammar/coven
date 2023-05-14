@@ -7,6 +7,8 @@ import FormWizard from "../../../../views/dashboard/from/form-wizard"
 
 import {
   Dropdown,
+  Col,
+  Row,
   Nav,
   Form,
   Card,
@@ -610,8 +612,63 @@ const Header = () => {
                                     <Modal.Header closeButton>
                                         <Modal.Title>Modal heading</Modal.Title>
                                     </Modal.Header>
-                                    <Modal.Body>A new way to register..</Modal.Body>
-                                    <FormWizard />
+                                    {/* <FormWizard address={walletAddress}/> */}
+
+
+
+          <div id='content-page' className='content-page'>
+            <Container>
+                <Row>
+                    <Col sm="12" lg="12">
+                        <Card>
+                            <Card.Header className="d-flex justify-content-between">
+                                <div className="header-title">
+                                    <h4 className="card-title">A new way to register..</h4>
+                                </div>
+                            </Card.Header>
+                            <Card.Body>
+                                <Form id="form-wizard1" className="text-center mt-3">
+                                   
+                                    <fieldset >
+                                        <div className="form-card text-start">
+                                           
+                                            <Row>
+                                                <Col md="6">
+                                                    <Form.Group className="form-group">
+                                                        <Form.Label>Wallet Address: *</Form.Label>
+                                                        <Form.Control type="email" name="email" placeholder={walletAddress} />
+                                                    </Form.Group>
+                                                </Col>
+                                                <Col md="6">
+                                                    <Form.Group className="form-group">
+                                                        <Form.Label>Profile Handle: *</Form.Label>
+                                                        <Form.Control type="text" name="uname" placeholder="UserName" />
+                                                    </Form.Group>
+                                                </Col>
+                                                <Col md="6">
+                                                    <Form.Group className="form-group">
+                                                        <Form.Label>Image: *</Form.Label>
+                                                        <Form.Control type="file" name="pic" accept="image/*"/>
+                                                    </Form.Group>
+                                                </Col>
+                                             
+                                            </Row>
+                                        </div>
+                                       
+                                    </fieldset>
+                                </Form>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+            </Container>
+            </div>
+
+
+
+
+
+
                                     <Modal.Footer>
                                         <Button variant="secondary" onClick={handleClose4}>
                                             Close
