@@ -38,3 +38,11 @@ See the live application here: [Live Version](https://resonant-druid-87de9c.netl
 - HTML5
 - CSS3
 - Bootstrap
+
+## Getting Started
+Follow the simple intructions below to explore the application either on the live version or locally on your computer.
+ 
+### Live Version
+See the live application here: [Live Version](https://resonant-druid-87de9c.netlify.app/)
+
+### Local Version
