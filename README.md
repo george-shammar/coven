@@ -46,6 +46,9 @@ Follow the simple intructions below to explore the application either on the liv
 See the live application here: [Live Version](https://resonant-druid-87de9c.netlify.app/)
 
 #### Prerequisites
-- Metamask wallet
+- Metamask wallet (Connected to the BSC testnet network)
 
 ### Local Version
+
+#### Prerequisites
+- Metamask wallet (Connected to the BSC testnet network)
