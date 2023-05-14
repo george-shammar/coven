@@ -57,3 +57,6 @@ See the live application here: [Live Version](https://resonant-druid-87de9c.netl
 #### Steps
 - Go to the "Code" section of this repository and press the green button that says "Code". Copy the URL or the SSH key.
 - Go to the terminal and run:
+```
+git clone https://github.com/george-shammar/coven.git
+```
