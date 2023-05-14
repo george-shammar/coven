@@ -58,6 +58,7 @@ async function main() {
 
   console.log("LensHub address:", lenshub.address);
 
+
   // ================================== *** Collect and Follow deployment *** ================================================
 
   console.log('\n\t-- Deploying Follow & Collect NFT Implementations --');
@@ -75,7 +76,7 @@ async function main() {
   saveFrontendFiles(follownft, collectnft, lenshub);
 }
 
-function saveFrontendFiles(follownft, collectnft, lenshub) {
+function saveFrontendFiles(lenshub) {
   const fs = require("fs");
   const contractsDir = __dirname + "/../src/contracts";
 

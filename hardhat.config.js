@@ -1,4 +1,9 @@
 require("@nomiclabs/hardhat-waffle");
+const dotenv = require('dotenv');
+dotenv.config({ path: './.env' });
+
+API_KEY = process.env.QUICKNODE_API_KEY
+PRIVATE_KEY = process.env.BSC_PRIVATE_KEY
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
@@ -21,6 +26,10 @@ module.exports = {
   networks: {
     hardhat: {
       chainId: 1337
+    },
+    tBSC: {
+      url: `https://tame-summer-energy.bsc-testnet.discover.quiknode.pro/${API_KEY}/`,
+      accounts: [PRIVATE_KEY]
     }
   },
   solidity: {
