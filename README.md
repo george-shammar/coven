@@ -102,3 +102,13 @@ NB: This is only an MVP, most part of the application are still being actively d
 2. Content engagements (likes, mirror)
 
 - Complete social graph implementation
+
+
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+## Show your support
+
+Give a ⭐️ if you like this project!
