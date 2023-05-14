@@ -3,7 +3,6 @@ import { ethers } from "ethers";
 import LensHubAddress from "../../../../contracts/contract-address.json";
 import LensHubArtifact from "../../../../contracts/LensHub.json";
 import { connectWallet, getCurrentWalletConnected } from "../../../../utils/wallet";
-import FormWizard from "../../../../views/dashboard/from/form-wizard"
 
 import {
   Dropdown,
