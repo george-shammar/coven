@@ -3,15 +3,19 @@ import { ethers } from "ethers";
 import LensHubAddress from "../../../../contracts/contract-address.json";
 import LensHubArtifact from "../../../../contracts/LensHub.json";
 import { connectWallet, getCurrentWalletConnected } from "../../../../utils/wallet";
+import FormWizard from "../../../../views/dashboard/from/form-wizard"
 
 import {
   Dropdown,
+  Col,
+  Row,
   Nav,
   Form,
   Card,
   Container,
   Image,
   Modal,
+  Button
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -40,6 +44,9 @@ const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
 const Header = () => {
   const [walletAddress, setWallet] = useState("");
+  const [show4, setShow4] = useState(false);
+  const handleClose4 = () => setShow4(false);
+  const handleShow4 = () => setShow4(true); 
 
   useEffect(() => {
     (async() => {
@@ -78,27 +85,18 @@ const Header = () => {
     const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
 
       try {
-        // const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
-        // const inputStruct = {
-        //   to: walletAddress,
-        //   handle: 'shammar',
-        //   imageURI: 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX',
-        //   followModule: ZERO_ADDRESS,
-        //   followModuleInitData: [],
-        //   followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
-        // };
+        const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
+        const inputStruct = {
+          to: walletAddress,
+          handle: 'shammar',
+          imageURI: 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX',
+          followModule: ZERO_ADDRESS,
+          followModuleInitData: [],
+          followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
+        };
        
-        // console.log(inputStruct);
-        const transaction = await contract.createProfile(
-          {
-            to: '0x92561F28Ec438Ee9831D00D1D59fbDC981b762b2',
-            handle: 'zer0dot',
-            imageURI: 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX',
-            followModule: '0x0000000000000000000000000000000000000000',
-            followModuleInitData: [],
-            followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS'
-          }
-        );
+        console.log(inputStruct.to);
+        const transaction = await contract.createProfile(inputStruct);
         const receipt = await transaction.wait();
           if (receipt.status === 0) {
               throw new Error("Transaction failed");
@@ -592,7 +590,94 @@ const Header = () => {
                 <Link to="/" className="d-flex align-items-center">
                   {/* <i className="material-symbols-outlined">home</i> */}
                   {/* <span className="mobile-text d-none ms-3">Sign Up</span> */}
-                  <p onClick={createProfile}>Sign Up</p>
+                  {/* <p>Sign Up</p>{' '}
+                                <Modal size="lg" show={show4} onHide={handleClose4}>
+                                    <Modal.Header closeButton>
+                                        <Modal.Title>Modal heading</Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>Modal body text goes here.</Modal.Body>
+                                    <Modal.Footer>
+                                        <Button variant="secondary" onClick={handleClose4}>
+                                            Close
+                                        </Button>
+                                        <Button variant="primary" onClick={createProfile}>
+                                            Create
+                                        </Button>
+                                    </Modal.Footer>
+                                </Modal> */}
+                                <Button variant="primary" onClick={handleShow4}>
+                                Sign Up
+                                </Button>{' '}
+                                <Modal size="lg" show={show4} onHide={handleClose4}>
+                                    <Modal.Header closeButton>
+                                        <Modal.Title>Modal heading</Modal.Title>
+                                    </Modal.Header>
+                                    {/* <FormWizard address={walletAddress}/> */}
+
+
+
+          <div id='content-page' className='content-page'>
+            <Container>
+                <Row>
+                    <Col sm="12" lg="12">
+                        <Card>
+                            <Card.Header className="d-flex justify-content-between">
+                                <div className="header-title">
+                                    <h4 className="card-title">A new way to register..</h4>
+                                </div>
+                            </Card.Header>
+                            <Card.Body>
+                                <Form id="form-wizard1" className="text-center mt-3">
+                                   
+                                    <fieldset >
+                                        <div className="form-card text-start">
+                                           
+                                            <Row>
+                                                <Col md="6">
+                                                    <Form.Group className="form-group">
+                                                        <Form.Label>Wallet Address: *</Form.Label>
+                                                        <Form.Control type="email" name="email" placeholder={walletAddress} />
+                                                    </Form.Group>
+                                                </Col>
+                                                <Col md="6">
+                                                    <Form.Group className="form-group">
+                                                        <Form.Label>Profile Handle: *</Form.Label>
+                                                        <Form.Control type="text" name="uname" placeholder="UserName" />
+                                                    </Form.Group>
+                                                </Col>
+                                                <Col md="6">
+                                                    <Form.Group className="form-group">
+                                                        <Form.Label>Image: *</Form.Label>
+                                                        <Form.Control type="file" name="pic" accept="image/*"/>
+                                                    </Form.Group>
+                                                </Col>
+                                             
+                                            </Row>
+                                        </div>
+                                       
+                                    </fieldset>
+                                </Form>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+            </Container>
+            </div>
+
+
+
+
+
+
+                                    <Modal.Footer>
+                                        <Button variant="secondary" onClick={handleClose4}>
+                                            Close
+                                        </Button>
+                                        <Button variant="primary" onClick={createProfile}>
+                                            Create
+                                        </Button>
+                                    </Modal.Footer>
+                                </Modal>
                 </Link>
               </Nav.Item>
               <Nav.Item as="li" className="d-lg-none">
