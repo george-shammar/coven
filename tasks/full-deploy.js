@@ -86,14 +86,13 @@ function saveFrontendFiles(lenshub) {
 
   fs.writeFileSync(
     contractsDir + "/contract-address.json",
-    // JSON.stringify({ FollowNFT: follownft.address,
-    //                  CollectNFT: collectnft.address,
-    //                  LensHub: lenshub.address}, undefined, 2)
-    JSON.stringify({ LensHub: lenshub.address}, undefined, 2)
+    JSON.stringify({ FollowNFT: follownft.address,
+                     CollectNFT: collectnft.address,
+                     LensHub: lenshub.address}, undefined, 2)
   );
 
-  // const FollowNFTArtifact = artifacts.readArtifactSync("FollowNFT");
-  // const CollectNFTArtifact = artifacts.readArtifactSync("CollectNFT");
+  const FollowNFTArtifact = artifacts.readArtifactSync("FollowNFT");
+  const CollectNFTArtifact = artifacts.readArtifactSync("CollectNFT");
   const LensHubArtifact = artifacts.readArtifactSync("LensHub");
 
   // fs.writeFileSync(
