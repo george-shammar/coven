@@ -76,7 +76,7 @@ async function main() {
   saveFrontendFiles(follownft, collectnft, lenshub);
 }
 
-function saveFrontendFiles(lenshub) {
+function saveFrontendFiles(follownft, collectnft, lenshub) {
   const fs = require("fs");
   const contractsDir = __dirname + "/../src/contracts";
 
