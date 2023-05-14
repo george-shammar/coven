@@ -2,11 +2,12 @@
 ### A decentralized SocialFi application on the Binance Smart Chain.
 
 ## Overview
-
+-mvp
+-customized lenshub social graph implementation
 
 
 ## Live Project
-See the here: [Live Version](https://resonant-druid-87de9c.netlify.app/)
+See the live application here: [Live Version](https://resonant-druid-87de9c.netlify.app/)
 
 
 ## Contract Addresses on the Binance Smart chain (Testnet)
