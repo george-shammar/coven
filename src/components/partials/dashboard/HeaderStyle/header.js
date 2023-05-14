@@ -78,27 +78,18 @@ const Header = () => {
     const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
 
       try {
-        // const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
-        // const inputStruct = {
-        //   to: walletAddress,
-        //   handle: 'shammar',
-        //   imageURI: 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX',
-        //   followModule: ZERO_ADDRESS,
-        //   followModuleInitData: [],
-        //   followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
-        // };
+        const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
+        const inputStruct = {
+          to: walletAddress,
+          handle: 'shammar',
+          imageURI: 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX',
+          followModule: ZERO_ADDRESS,
+          followModuleInitData: [],
+          followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
+        };
        
         // console.log(inputStruct);
-        const transaction = await contract.createProfile(
-          {
-            to: '0x92561F28Ec438Ee9831D00D1D59fbDC981b762b2',
-            handle: 'zer0dot',
-            imageURI: 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX',
-            followModule: '0x0000000000000000000000000000000000000000',
-            followModuleInitData: [],
-            followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS'
-          }
-        );
+        const transaction = await contract.createProfile(inputStruct);
         const receipt = await transaction.wait();
           if (receipt.status === 0) {
               throw new Error("Transaction failed");
