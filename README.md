@@ -1,18 +1,5 @@
-# Basic Sample Hardhat Project
-
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
-
-Try running some of the following tasks:
-
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+# COVVEN
+### A decentralized SocialFi application on the Binance Smart Chain.
 https://resonant-druid-87de9c.netlify.app/
 
 "FollowNFT": "0xBEf57D662972B07E4926ed091805A9C0dbdfCB83",
