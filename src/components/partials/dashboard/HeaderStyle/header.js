@@ -3,6 +3,7 @@ import { ethers } from "ethers";
 import LensHubAddress from "../../../../contracts/contract-address.json";
 import LensHubArtifact from "../../../../contracts/LensHub.json";
 import { connectWallet, getCurrentWalletConnected } from "../../../../utils/wallet";
+import { create as ipfsHttpClient } from "ipfs-http-client";
 
 import {
   Dropdown,
