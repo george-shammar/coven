@@ -160,15 +160,14 @@ const Header = () => {
           followModuleInitData: [],
           followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
         };
-       
-        console.log(inputStruct);
-        // const transaction = await contract.createProfile(inputStruct);
-        // const receipt = await transaction.wait();
-        //   if (receipt.status === 0) {
-        //       throw new Error("Transaction failed");
-        //   } else {
-        //   console.log(receipt.status)
-        //   }
+      
+        const transaction = await contract.createProfile(inputStruct);
+        const receipt = await transaction.wait();
+          if (receipt.status === 0) {
+              throw new Error("Transaction failed");
+          } else {
+          console.log(receipt.status)
+          }
       } catch (error) {
         if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
           return;
