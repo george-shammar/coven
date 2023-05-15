@@ -23,9 +23,11 @@ See the live application here: [Live Version](https://resonant-druid-87de9c.netl
 ![screenshot](./profile-dark.png)
 
 ## Problem Statement
-
+- Corporate entities control major social media sites, and a small group of people within these companies sets the rules of engagement. 
+- This has raised concerns about free speech and censorship among users.
 
 ## Our Solution
+- Covven is a A decentralized social network which allows users more control. Not only for their content but also for their personal data.
 
 
 ## Built With
