@@ -123,14 +123,14 @@ const Header = () => {
         const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
         const inputStruct = {
           to: walletAddress,
-          handle: 'shammar',
+          handle: handle,
           imageURI: url,
           followModule: ZERO_ADDRESS,
           followModuleInitData: [],
           followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
         };
        
-        console.log(inputStruct.to);
+        console.log(inputStruct);
         const transaction = await contract.createProfile(inputStruct);
         const receipt = await transaction.wait();
           if (receipt.status === 0) {
