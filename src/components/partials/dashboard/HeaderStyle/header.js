@@ -47,6 +47,7 @@ const Header = () => {
   const handleClose4 = () => setShow4(false);
   const handleShow4 = () => setShow4(true);
   const [formInput, updateFormInput] = useState({name:""});
+  const [fileUrl, setFileUrl] = useState(null);
   const [status, setStatus] = useState(""); 
 
   useEffect(() => {
