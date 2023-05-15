@@ -53,7 +53,9 @@ const Header = () => {
     (async() => {
       const {address} = await getCurrentWalletConnected();
       setWallet(address)
-  
+      if (!walletAddress) {
+        setStatus("Click the wallet icon before signing up");
+      }
       addWalletListener();
     }) ()
   }, []);
@@ -80,9 +82,6 @@ const Header = () => {
   }
 
   async function createProfile() {
-    if (!walletAddress) {
-      setStatus("Click the wallet icon before signing up");
-    }
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
@@ -587,27 +586,12 @@ const Header = () => {
                 </div>
               </Modal>
             </div>
-
+            <p>{status}</p>
             <ul className="navbar-nav navbar-list">
+            
               <Nav.Item as="li">
                 <Link to="/" className="d-flex align-items-center">
-                  {/* <i className="material-symbols-outlined">home</i> */}
-                  {/* <span className="mobile-text d-none ms-3">Sign Up</span> */}
-                  {/* <p>Sign Up</p>{' '}
-                                <Modal size="lg" show={show4} onHide={handleClose4}>
-                                    <Modal.Header closeButton>
-                                        <Modal.Title>Modal heading</Modal.Title>
-                                    </Modal.Header>
-                                    <Modal.Body>Modal body text goes here.</Modal.Body>
-                                    <Modal.Footer>
-                                        <Button variant="secondary" onClick={handleClose4}>
-                                            Close
-                                        </Button>
-                                        <Button variant="primary" onClick={createProfile}>
-                                            Create
-                                        </Button>
-                                    </Modal.Footer>
-                                </Modal> */}
+                  
                                 <Button variant="primary" onClick={handleShow4}>
                                 Sign Up
                                 </Button>{' '}
@@ -615,7 +599,7 @@ const Header = () => {
                                     <Modal.Header closeButton>
                                         <Modal.Title>Modal heading</Modal.Title>
                                     </Modal.Header>
-                                    {/* <FormWizard address={walletAddress}/> */}
+                                 
 
 
 
