@@ -120,7 +120,7 @@ const Header = () => {
         const inputStruct = {
           to: walletAddress,
           handle: 'shammar',
-          imageURI: 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX',
+          imageURI: url,
           followModule: ZERO_ADDRESS,
           followModuleInitData: [],
           followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
