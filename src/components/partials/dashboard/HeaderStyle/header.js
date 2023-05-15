@@ -80,7 +80,9 @@ const Header = () => {
   }
 
   async function createProfile() {
-
+    if (!walletAddress) {
+      setStatus("Click the wallet icon before signing up");
+    }
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
