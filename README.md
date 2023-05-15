@@ -90,6 +90,9 @@ The application should open up at http://localhost:3000/
 ## Usage
 
 NB: This is only an MVP, most part of the application are still being actively developed so placeholders are still being used in some parts of the website given the limited time. Significant development effort is expected to continue (including deploying to the mainnet) after the Hackathon. 
+1. Click the "wallet" icon to connect a metamask wallet. (Only metamask is currently supported).
+2. Click on "Sign up" to create a profile.
+3. After creating a profile, every other standard social network activities are the same. Creating a post, commenting, liking, mirror a post (equivalence of retweeting), e.t.c
 
 ### MVP Features
 - Create a profile.
