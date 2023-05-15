@@ -40,6 +40,7 @@ import CustomToggle from "../../../dropdowns";
 import axios from 'axios';
 const FormData = require('form-data');
 const fs = require('fs');
+const JWT = 'Bearer PINATA_JWT'
 
 const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
