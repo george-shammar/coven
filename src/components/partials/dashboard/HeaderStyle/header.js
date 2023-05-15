@@ -38,10 +38,15 @@ import user16 from "../../../../assets/images/page-img/01.jpg";
 //Componets
 import CustomToggle from "../../../dropdowns";
 import axios from 'axios';
+import fs from "fs";
 const FormData = require('form-data');
-const fs = require('fs');
-const JWT = 'Bearer PINATA_JWT'
+// const fs = require('fs');
+const dotenv = require('dotenv');
+dotenv.config({ path: "../../../../../.env"});
 
+console.log(process.env.PINATA_JWT);
+const JWT = 'Bearer PINATA'
+console.log(JWT)
 const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
 const Header = () => {
@@ -54,20 +59,20 @@ const Header = () => {
   const [status, setStatus] = useState("");
   
   async function onChange(e) {
-    const file = e.target.files[0];
-    try {
-        const added = await client.add(
-            file,
-            {
-                progress: (prog) => console.log(`received: ${prog}`)
-            }
-        )
-        const url = `https://ipfs.infura.io/ipfs/${added.path}`
-        setFileUrl(url);
-        console.log(url);
-    } catch (e) {
-        console.log(e);
-    }
+    // const file = e.target.files[0];
+    // try {
+    //     const added = await client.add(
+    //         file,
+    //         {
+    //             progress: (prog) => console.log(`received: ${prog}`)
+    //         }
+    //     )
+    //     const url = `https://ipfs.infura.io/ipfs/${added.path}`
+    //     setFileUrl(url);
+    //     console.log(url);
+    // } catch (e) {
+    //     console.log(e);
+    // }
   }
 
   useEffect(() => {
@@ -119,13 +124,11 @@ const Header = () => {
     const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
 
       try {
-        const added = await client.add(data);
-        const url = `https://ipfs.infura.io/ipfs/${added.path}`
         const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
         const inputStruct = {
           to: walletAddress,
           handle: handle,
-          imageURI: url,
+          imageURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
           followModule: ZERO_ADDRESS,
           followModuleInitData: [],
           followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
