@@ -131,13 +131,13 @@ const Header = () => {
         };
        
         console.log(inputStruct);
-        const transaction = await contract.createProfile(inputStruct);
-        const receipt = await transaction.wait();
-          if (receipt.status === 0) {
-              throw new Error("Transaction failed");
-          } else {
-          console.log(receipt.status)
-          }
+        // const transaction = await contract.createProfile(inputStruct);
+        // const receipt = await transaction.wait();
+        //   if (receipt.status === 0) {
+        //       throw new Error("Transaction failed");
+        //   } else {
+        //   console.log(receipt.status)
+        //   }
       } catch (error) {
         if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
           return;
@@ -662,7 +662,9 @@ const Header = () => {
                                                 <Col md="6">
                                                     <Form.Group className="form-group">
                                                         <Form.Label>Profile Handle: *</Form.Label>
-                                                        <Form.Control type="text" name="uname" placeholder="UserName" />
+                                                        <Form.Control type="text" name="uname" placeholder="handle" 
+                                                        onChange={e => updateFormInput({...formInput, handle: e.target.value})}
+                                                        required />
                                                     </Form.Group>
                                                 </Col>
                                                 <Col md="6">
