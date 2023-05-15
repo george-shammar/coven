@@ -55,6 +55,7 @@ const Header = () => {
   const [formInput, updateFormInput] = useState({handle:""});
   const [fileUrl, setFileUrl] = useState(null);
   const [status, setStatus] = useState("");
+  const [profile, setProfile] = useState("");
 
   
   async function onChange(e) {
@@ -160,7 +161,9 @@ const Header = () => {
           followModuleInitData: [],
           followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
         };
-      
+
+        localStorage.setItem("profile-handle", `${inputStruct.handle}`);
+
         const transaction = await contract.createProfile(inputStruct);
         const receipt = await transaction.wait();
           if (receipt.status === 0) {
@@ -178,6 +181,10 @@ const Header = () => {
       }
     };
 
+    async function profile() {
+     const profile_handle = localStorage.getItem("profile-handle");
+     setProfile(profile_handle);
+    }
 
   const minisidebar = () => {
     document.getElementsByTagName("ASIDE")[0].classList.toggle("sidebar-mini");
