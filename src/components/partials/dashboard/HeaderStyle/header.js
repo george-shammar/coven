@@ -105,9 +105,9 @@ const Header = () => {
   async function createProfile() {
     const {handle} = formInput;
     if (!handle) return
-    if (!fileUrl) {
-      fileUrl = 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX'
-    }
+    // if (!fileUrl) {
+    //   fileUrl = 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX'
+    // }
 
     const data = JSON.stringify({
       handle, image: fileUrl
@@ -669,8 +669,16 @@ const Header = () => {
                                                 </Col>
                                                 <Col md="6">
                                                     <Form.Group className="form-group">
-                                                        <Form.Label>Image: *</Form.Label>
-                                                        <Form.Control type="file" name="pic" accept="image/*"/>
+                                                        <Form.Label>Image: </Form.Label>
+                                                        <input type="file" name="pic" accept="image/*"
+                                                        onChange={onChange} />
+                                                         <div>
+                                                          {
+                                                              fileUrl && (
+                                                                  <img src={fileUrl} alt=""/>
+                                                              )
+                                                          }
+                                                          </div>
                                                     </Form.Group>
                                                 </Col>
                                              
