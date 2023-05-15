@@ -162,8 +162,6 @@ const Header = () => {
           followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
         };
 
-        localStorage.setItem("profile-handle", `${inputStruct.handle}`);
-
         const transaction = await contract.createProfile(inputStruct);
         const receipt = await transaction.wait();
           if (receipt.status === 0) {
@@ -171,6 +169,7 @@ const Header = () => {
           } else {
           console.log(receipt.status)
           }
+
       } catch (error) {
         if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
           return;
@@ -181,10 +180,9 @@ const Header = () => {
       }
     };
 
-    async function profile() {
-     const profile_handle = localStorage.getItem("profile-handle");
-     setProfile(profile_handle);
-    }
+    
+     
+    
 
   const minisidebar = () => {
     document.getElementsByTagName("ASIDE")[0].classList.toggle("sidebar-mini");
@@ -1429,7 +1427,7 @@ const Header = () => {
                     loading="lazy"
                   />
                   <div className="caption d-none d-lg-block">
-                    <h6 className="mb-0 line-height">Bni Cyst</h6>
+                    <h6 className="mb-0 line-height">{profile}</h6>
                   </div>
                 </Dropdown.Toggle>
                 <Dropdown.Menu className="sub-drop caption-menu">
