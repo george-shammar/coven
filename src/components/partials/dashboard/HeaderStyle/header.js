@@ -37,8 +37,8 @@ import user15 from "../../../../assets/images/page-img/02.jpg";
 import user16 from "../../../../assets/images/page-img/01.jpg";
 //Componets
 import CustomToggle from "../../../dropdowns";
-// import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
 import axios from 'axios';
+const FormData = require('form-data')
 
 const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 

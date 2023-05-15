@@ -35,6 +35,7 @@
     "eslint-plugin-prettier": "4.0.0",
     "ethereum-waffle": "3.4.0",
     "ethers": "5.5.1",
+    "form-data": "^4.0.0",
     "fullcalendar-interaction": "^5.3.3",
     "hardhat": "^2.14.0",
     "hardhat-contract-sizer": "2.1.1",
