@@ -114,6 +114,8 @@ const Header = () => {
     const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
 
       try {
+        const added = await client.add(data);
+        const url = `https://ipfs.infura.io/ipfs/${added.path}`
         const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
         const inputStruct = {
           to: walletAddress,
