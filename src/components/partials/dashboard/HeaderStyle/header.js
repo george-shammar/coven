@@ -45,7 +45,9 @@ const Header = () => {
   const [walletAddress, setWallet] = useState("");
   const [show4, setShow4] = useState(false);
   const handleClose4 = () => setShow4(false);
-  const handleShow4 = () => setShow4(true); 
+  const handleShow4 = () => setShow4(true);
+  const [formInput, updateFormInput] = useState({name:""});
+  const [status, setStatus] = useState(""); 
 
   useEffect(() => {
     (async() => {
