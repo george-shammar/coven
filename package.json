@@ -36,6 +36,7 @@
     "ethereum-waffle": "3.4.0",
     "ethers": "5.5.1",
     "form-data": "^4.0.0",
+    "fs": "^0.0.1-security",
     "fullcalendar-interaction": "^5.3.3",
     "hardhat": "^2.14.0",
     "hardhat-contract-sizer": "2.1.1",

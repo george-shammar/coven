@@ -38,7 +38,8 @@ import user16 from "../../../../assets/images/page-img/01.jpg";
 //Componets
 import CustomToggle from "../../../dropdowns";
 import axios from 'axios';
-const FormData = require('form-data')
+const FormData = require('form-data');
+const fs = require('fs');
 
 const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
