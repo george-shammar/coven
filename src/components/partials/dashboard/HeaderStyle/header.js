@@ -42,6 +42,7 @@ import fs from "fs";
 const FormData = require('form-data');
 
 const PINATA = process.env.REACT_APP_PINATA_JWT
+
 const JWT = `Bearer ${PINATA}`;
 const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
@@ -76,7 +77,6 @@ const Header = () => {
     (async() => {
       const {address} = await getCurrentWalletConnected();
       setWallet(address)
-
       if (!address) {
         setStatus("Click the wallet icon before signing up");
       }
@@ -104,37 +104,8 @@ const Header = () => {
       });
       } 
   }
+  
 
-    const pinFileToIPFS = async () => {
-        const formData = new FormData();
-        const src = "../../../../assets/images/user/1.jpg";
-        
-        const file = fs.createReadStream(src)
-        formData.append('file', file)
-        
-        const metadata = JSON.stringify({
-          name: 'File name',
-        });
-        formData.append('pinataMetadata', metadata);
-        
-        const options = JSON.stringify({
-          cidVersion: 0,
-        })
-        formData.append('pinataOptions', options);
-
-        try{
-          const res = await axios.post("https://api.pinata.cloud/pinning/pinFileToIPFS", formData, {
-            maxBodyLength: "Infinity",
-            headers: {
-              'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
-              Authorization: JWT
-            }
-          });
-          console.log(res.data);
-        } catch (error) {
-          console.log(error);
-        }
-    }
 
 
   async function createProfile() {
@@ -143,27 +114,52 @@ const Header = () => {
     // if (!fileUrl) {
     //   fileUrl = 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX'
     // }
+console.log("hello")
+     const pinataApiKey = process.env.REACT_APP_PINATA_API_KEY
+     const pinataSecretApiKey = process.env.REACT_APP_PINATA_API_SECRET
+     const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
+  // //we gather a local file from the API for this example, but you can gather the file from anywhere
+     let data = new FormData();
+     
+     data.append('file', fs.createReadStream("../../../../assets/images/user/1.jpg"));
+     return axios.post(url,
+          data,
+              {
+                headers: {
+                  'Content-Type': `multipart/form-data; boundary= ${data._boundary}`,
+                  'pinata_api_key': pinataApiKey,
+                  'pinata_secret_api_key': pinataSecretApiKey
+             }
+           }
+     
+      ).then(function (response) {
+          console.log(response);
+      }).catch(function (error) {
+           console.log(error);
+       });
+    
+    console.log("hello")
 
-    const data = JSON.stringify({
-      handle, image: fileUrl
-    })
+    // const data = JSON.stringify({
+    //   handle, image: fileUrl
+    // })
 
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
 
       try {
-        const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
-        const inputStruct = {
-          to: walletAddress,
-          handle: handle,
-          imageURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
-          followModule: ZERO_ADDRESS,
-          followModuleInitData: [],
-          followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
-        };
+        // const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
+        // const inputStruct = {
+        //   to: walletAddress,
+        //   handle: handle,
+        //   imageURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
+        //   followModule: ZERO_ADDRESS,
+        //   followModuleInitData: [],
+        //   followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
+        // };
        
-        console.log(inputStruct);
+        // console.log(inputStruct);
         // const transaction = await contract.createProfile(inputStruct);
         // const receipt = await transaction.wait();
         //   if (receipt.status === 0) {
