@@ -23,9 +23,14 @@ See the live application here: [Live Version](https://resonant-druid-87de9c.netl
 ![screenshot](./profile-dark.png)
 
 ## Problem Statement
-
+- Corporate entities control major social media sites, and a small group of people within these companies sets the rules of engagement. 
+- This has raised concerns about free speech and censorship among users.
+- Invasive advertising by centralized networks and the risk to privacy.
 
 ## Our Solution
+- Covven is a A decentralized social network which allows users more control.
+- This application is censorship resistant, gives ownership to users over personal data, and improved control over user-generated content.
+- Instead of invasive advertisement, Covven promotes new forms of monetization to manage liquidity pool for incentivization.
 
 
 ## Built With
@@ -90,6 +95,9 @@ The application should open up at http://localhost:3000/
 ## Usage
 
 NB: This is only an MVP, most part of the application are still being actively developed so placeholders are still being used in some parts of the website given the limited time. Significant development effort is expected to continue (including deploying to the mainnet) after the Hackathon. 
+1. Click the "wallet" icon to connect a metamask wallet. (Only metamask is currently supported).
+2. Click on "Sign up" to create a profile.
+3. After creating a profile, every other standard social network activities are the same. Creating a post, commenting, liking, mirror a post (equivalence of retweeting), e.t.c
 
 ### MVP Features
 - Create a profile.
