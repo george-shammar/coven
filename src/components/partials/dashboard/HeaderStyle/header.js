@@ -53,7 +53,8 @@ const Header = () => {
     (async() => {
       const {address} = await getCurrentWalletConnected();
       setWallet(address)
-      if (!walletAddress) {
+
+      if (!address) {
         setStatus("Click the wallet icon before signing up");
       }
       addWalletListener();
