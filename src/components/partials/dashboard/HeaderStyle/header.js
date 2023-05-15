@@ -38,7 +38,8 @@ import user16 from "../../../../assets/images/page-img/01.jpg";
 //Componets
 import CustomToggle from "../../../dropdowns";
 import axios from 'axios';
-import fs from "fs";
+// import fs from "fs";
+const fs = require('fs');
 const FormData = require('form-data');
 
 const PINATA = process.env.REACT_APP_PINATA_JWT
@@ -57,20 +58,22 @@ const Header = () => {
 
   
   async function onChange(e) {
-    // const file = e.target.files[0];
+    const file = e.target.files[0];
+    // console.log('hello')
     // try {
-    //     const added = await client.add(
-    //         file,
-    //         {
-    //             progress: (prog) => console.log(`received: ${prog}`)
-    //         }
-    //     )
-    //     const url = `https://ipfs.infura.io/ipfs/${added.path}`
-    //     setFileUrl(url);
+    //     // const added = await client.add(
+    //     //     file,
+    //     //     {
+    //     //         progress: (prog) => console.log(`received: ${prog}`)
+    //     //     }
+    //     // )
+    //     const url = `'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS'`
+        setFileUrl(file);
     //     console.log(url);
     // } catch (e) {
     //     console.log(e);
     // }
+    console.log("image")
   }
 
   useEffect(() => {
@@ -114,31 +117,30 @@ const Header = () => {
     // if (!fileUrl) {
     //   fileUrl = 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX'
     // }
-console.log("hello")
-     const pinataApiKey = process.env.REACT_APP_PINATA_API_KEY
-     const pinataSecretApiKey = process.env.REACT_APP_PINATA_API_SECRET
-     const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
-  // //we gather a local file from the API for this example, but you can gather the file from anywhere
-     let data = new FormData();
+
+  //    const pinataApiKey = process.env.REACT_APP_PINATA_API_KEY
+  //    const pinataSecretApiKey = process.env.REACT_APP_PINATA_API_SECRET
+  //    const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
+  // // //we gather a local file from the API for this example, but you can gather the file from anywhere
+  //    let data = new FormData();
      
-     data.append('file', fs.createReadStream("../../../../assets/images/user/1.jpg"));
-     return axios.post(url,
-          data,
-              {
-                headers: {
-                  'Content-Type': `multipart/form-data; boundary= ${data._boundary}`,
-                  'pinata_api_key': pinataApiKey,
-                  'pinata_secret_api_key': pinataSecretApiKey
-             }
-           }
+  //    data.append('file', fs.createReadStream("../../../../assets/images/user/1.jpg"));
+  //    return axios.post(url,
+  //         data,
+  //             {
+  //               headers: {
+  //                 'Content-Type': `multipart/form-data; boundary= ${data._boundary}`,
+  //                 'pinata_api_key': pinataApiKey,
+  //                 'pinata_secret_api_key': pinataSecretApiKey
+  //            }
+  //          }
      
-      ).then(function (response) {
-          console.log(response);
-      }).catch(function (error) {
-           console.log(error);
-       });
+  //     ).then(function (response) {
+  //         console.log(response);
+  //     }).catch(function (error) {
+  //          console.log(error);
+  //      });
     
-    console.log("hello")
 
     // const data = JSON.stringify({
     //   handle, image: fileUrl
@@ -149,17 +151,17 @@ console.log("hello")
     const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
 
       try {
-        // const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
-        // const inputStruct = {
-        //   to: walletAddress,
-        //   handle: handle,
-        //   imageURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
-        //   followModule: ZERO_ADDRESS,
-        //   followModuleInitData: [],
-        //   followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
-        // };
+        const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
+        const inputStruct = {
+          to: walletAddress,
+          handle: handle,
+          imageURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
+          followModule: ZERO_ADDRESS,
+          followModuleInitData: [],
+          followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
+        };
        
-        // console.log(inputStruct);
+        console.log(inputStruct);
         // const transaction = await contract.createProfile(inputStruct);
         // const receipt = await transaction.wait();
         //   if (receipt.status === 0) {
@@ -697,7 +699,7 @@ console.log("hello")
                                                     </Form.Group>
                                                 </Col>
                                                 <Col md="6">
-                                                    <Form.Group className="form-group">
+                                                    {/* <Form.Group className="form-group">
                                                         <Form.Label>Image: </Form.Label>
                                                         <input type="file" name="pic" accept="image/*"
                                                         onChange={onChange} />
@@ -708,7 +710,8 @@ console.log("hello")
                                                               )
                                                           }
                                                           </div>
-                                                    </Form.Group>
+                                                    </Form.Group> */}
+                                                    
                                                 </Col>
                                              
                                             </Row>
