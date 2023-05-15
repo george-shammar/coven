@@ -40,11 +40,11 @@ import CustomToggle from "../../../dropdowns";
 import axios from 'axios';
 import fs from "fs";
 const FormData = require('form-data');
-// const fs = require('fs');
-const dotenv = require('dotenv');
-dotenv.config({ path: "../../../../../.env"});
 
-console.log(process.env.PINATA_JWT);
+// import dotenv from 'dotenv';
+// dotenv.config({ path: "../../../../../.env"});
+
+// console.log(process.env.PINATA_JWT);
 const JWT = 'Bearer PINATA'
 console.log(JWT)
 const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
