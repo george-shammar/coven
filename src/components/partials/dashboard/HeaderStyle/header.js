@@ -103,6 +103,12 @@ const Header = () => {
   }
 
   async function createProfile() {
+    const {handle} = formInput;
+    if (!handle) return
+    if (!fileUrl) {
+      fileUrl = 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX'
+    }
+
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
