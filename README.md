@@ -25,10 +25,12 @@ See the live application here: [Live Version](https://resonant-druid-87de9c.netl
 ## Problem Statement
 - Corporate entities control major social media sites, and a small group of people within these companies sets the rules of engagement. 
 - This has raised concerns about free speech and censorship among users.
+- Invasive advertising by centralized networks and the risk to privacy.
 
 ## Our Solution
 - Covven is a A decentralized social network which allows users more control.
 - This application is censorship resistant, gives ownership to users over personal data, and improved control over user-generated content.
+- Instead of invasive advertisement, Covven promotes new forms of monetization to manage liquidity pool for incentivization.
 
 
 ## Built With
