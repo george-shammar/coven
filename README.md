@@ -27,7 +27,8 @@ See the live application here: [Live Version](https://resonant-druid-87de9c.netl
 - This has raised concerns about free speech and censorship among users.
 
 ## Our Solution
-- Covven is a A decentralized social network which allows users more control. Not only for their content but also for their personal data.
+- Covven is a A decentralized social network which allows users more control.
+- This application is censorship resistant, gives ownership to users over personal data, and improved control over user-generated content.
 
 
 ## Built With
