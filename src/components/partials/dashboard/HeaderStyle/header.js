@@ -587,7 +587,7 @@ const Header = () => {
                 </div>
               </Modal>
             </div>
-            <p>{status}</p>
+            <p className="navbar-nav navbar-list">{status}</p>
             <ul className="navbar-nav navbar-list">
             
               <Nav.Item as="li">
