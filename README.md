@@ -6,7 +6,7 @@ Covven is a decentralized social network application built on the Binance Smart 
 
 Unlike most other decentralized social network applications, Covven implements "Engagement Rewards" to users who engage with creator's contents within the "Acceptable Reward Criteria". When users engage with posts and comments, users get to decide the payout of those posts. This way, quality content creation is rewarded by other users.
 
-The economic model and the tokenomics of Covven is being designed for a sustainable reward mechanism. 
+The economic model and the tokenomics of Covven is being designed for a sustainable reward mechanism. Covven leverages and customizes the Lens Protocol's social graph.
 
 ## Live Project
 See the live application here: [Live Version](https://resonant-druid-87de9c.netlify.app/)
