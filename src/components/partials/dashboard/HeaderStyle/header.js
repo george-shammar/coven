@@ -48,7 +48,24 @@ const Header = () => {
   const handleShow4 = () => setShow4(true);
   const [formInput, updateFormInput] = useState({name:""});
   const [fileUrl, setFileUrl] = useState(null);
-  const [status, setStatus] = useState(""); 
+  const [status, setStatus] = useState("");
+  
+  async function onChange(e) {
+    const file = e.target.files[0];
+    try {
+        const added = await client.add(
+            file,
+            {
+                progress: (prog) => console.log(`received: ${prog}`)
+            }
+        )
+        const url = `https://ipfs.infura.io/ipfs/${added.path}`
+        setFileUrl(url);
+        console.log(url);
+    } catch (e) {
+        console.log(e);
+    }
+  }
 
   useEffect(() => {
     (async() => {
