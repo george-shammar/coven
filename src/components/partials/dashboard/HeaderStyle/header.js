@@ -3,7 +3,6 @@ import { ethers } from "ethers";
 import LensHubAddress from "../../../../contracts/contract-address.json";
 import LensHubArtifact from "../../../../contracts/LensHub.json";
 import { connectWallet, getCurrentWalletConnected } from "../../../../utils/wallet";
-import { create as ipfsHttpClient } from "ipfs-http-client";
 
 import {
   Dropdown,
@@ -41,7 +40,6 @@ import CustomToggle from "../../../dropdowns";
 // import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
 
 const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
-const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0');
 
 const Header = () => {
   const [walletAddress, setWallet] = useState("");
