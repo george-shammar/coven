@@ -1,19 +1,9 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import { ethers } from "ethers";
 import LensHubAddress from "../../../../contracts/contract-address.json";
 import LensHubArtifact from "../../../../contracts/LensHub.json";
 import { connectWallet, getCurrentWalletConnected } from "../../../../utils/wallet";
-
-import {
-  MDBBtn,
-  MDBModal,
-  MDBModalDialog,
-  MDBModalContent,
-  MDBModalHeader,
-  MDBModalTitle,
-  MDBModalBody,
-  MDBModalFooter,
-} from 'mdb-react-ui-kit';
+import Mode from "./modal";
 
 import {
   Dropdown,
@@ -664,15 +654,26 @@ const Header = () => {
             </div>
             <p className="navbar-nav navbar-list">{status}</p>
             <ul className="navbar-nav navbar-list">
-            
+            <Mode />
               <Nav.Item as="li">
-                <Link to="/" className="d-flex align-items-center">
+                <Link className="d-flex align-items-center">
                                 <Button variant="primary">
                                 Sign Up
-                                </Button>
-                               
-                </Link>
-              </Nav.Item>
+                                </Button> 
+                                
+
+
+
+
+
+
+
+
+
+
+
+
+
               <Nav.Item as="li" className="d-lg-none">
               <div className="iq-search-bar device-search  position-relative">
               <form
