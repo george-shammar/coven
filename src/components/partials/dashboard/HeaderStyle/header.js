@@ -659,8 +659,7 @@ const Header = () => {
             
               <Nav.Item as="li">
                 <Link to="/" className="d-flex align-items-center">
-                  
-                                <Button variant="primary" onClick={handleShow4}>
+                                <Button variant="primary">
                                 Sign Up
                                 </Button>
                 </Link>
