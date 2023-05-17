@@ -17,7 +17,7 @@ export default function Modal() {
 
   return (
     <>
-      <MDBBtn onClick={toggleShow}>LAUNCH DEMO MODAL</MDBBtn>
+      <MDBBtn onClick={toggleShow}>Create Profile</MDBBtn>
       <MDBModal show={basicModal} setShow={setBasicModal} tabIndex='-1'>
         <MDBModalDialog>
           <MDBModalContent>
@@ -25,7 +25,9 @@ export default function Modal() {
               <MDBModalTitle>Modal title</MDBModalTitle>
               <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
             </MDBModalHeader>
-            <MDBModalBody>...</MDBModalBody>
+            <MDBModalBody>
+              
+            </MDBModalBody>
 
             <MDBModalFooter>
               <MDBBtn color='secondary' onClick={toggleShow}>
