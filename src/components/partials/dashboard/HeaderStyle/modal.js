@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import {Modal, Button} from 'react-bootstrap';
 
 export default function Mode() {
@@ -8,8 +7,11 @@ export default function Mode() {
   const handleShow = () => setShow(true);
   return (
     <>
-      <Button className="nextButton" onClick={handleShow}>
-        Open Modal
+      {/* <Button className="nextButton" >
+        Sign Up
+      </Button> */}
+      <Button variant="primary" onClick={handleShow}>
+        Sign Up
       </Button>
 
       <Modal show={show} onHide={handleClose} size="lg">
