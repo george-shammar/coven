@@ -58,23 +58,52 @@ const Header = () => {
   const [profile, setProfile] = useState("");
 
   
-  async function onChange(e) {
-    const file = e.target.files[0];
-    // console.log('hello')
-    // try {
-    //     // const added = await client.add(
-    //     //     file,
-    //     //     {
-    //     //         progress: (prog) => console.log(`received: ${prog}`)
-    //     //     }
-    //     // )
-    //     const url = `'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS'`
-        setFileUrl(file);
-    //     console.log(url);
-    // } catch (e) {
-    //     console.log(e);
-    // }
-    console.log("image")
+  // async function onChange(e) {
+  //   const file = e.target.files[0];
+  //   // console.log('hello')
+  //   // try {
+  //   //     // const added = await client.add(
+  //   //     //     file,
+  //   //     //     {
+  //   //     //         progress: (prog) => console.log(`received: ${prog}`)
+  //   //     //     }
+  //   //     // )
+  //   //     const url = `'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS'`
+        
+  //   //     console.log(url);
+  //   // } catch (e) {
+  //   //     console.log(e);
+  //   // }
+  //   console.log("image")
+  // }
+  
+  function onChange(event) {
+    /** @type {HTMLFormElement} */
+    const form = event.currentTarget;
+    const url = new URL(form.action);
+    const formData = new FormData(form);
+    const searchParams = new URLSearchParams(formData);
+  
+    console.log(url)
+
+    /** @type {Parameters<fetch>[1]} */
+    const fetchOptions = {
+      method: form.method,
+    };
+  
+    if (form.method.toLowerCase() === 'post') {
+      if (form.enctype === 'multipart/form-data') {
+        fetchOptions.body = formData;
+      } else {
+        fetchOptions.body = searchParams;
+      }
+    } else {
+      url.search = searchParams;
+    }
+  
+    fetch(url, fetchOptions);
+  
+    event.preventDefault();
   }
 
   useEffect(() => {
@@ -703,6 +732,7 @@ const Header = () => {
                                                     </Form.Group>
                                                 </Col>
                                                 <Col md="6">
+                                                  <input type="file"/>
                                                     {/* <Form.Group className="form-group">
                                                         <Form.Label>Image: </Form.Label>
                                                         <input type="file" name="pic" accept="image/*"
