@@ -6,8 +6,6 @@ import LensHubArtifact from "../../../../contracts/LensHub.json";
 import axios from 'axios';
 const fs = require('fs');
 const FormData = require('form-data');
-const PINATA = process.env.REACT_APP_PINATA_JWT
-const JWT = `Bearer ${PINATA}`;
 
 const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
@@ -21,6 +19,10 @@ export default function Mode({walletAd}) {
   function onFileChange(e) {
     // Update the state
     const file = e.target.files[0];
+
+    const pinataApiKey = process.env.REACT_APP_PINATA_API_KEY
+    const pinataSecretApiKey = process.env.REACT_APP_PINATA_API_SECRET
+    const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
   
    // const url = `https://ipfs.infura.io/ipfs/${file}`
     // Create an object of formData
@@ -39,17 +41,16 @@ export default function Mode({walletAd}) {
 
   function onFileUpload() {
     // Create an object of formData
-    const formData = new FormData();
+    // const formData = new FormData();
    
     // Update the formData object
-    formData.append(
-      "myFile",
-      fileUrl,
-      fileUrl.name
-    );
+    // formData.append(
+    //   "myFile",
+    //   fileUrl,
+    //   fileUrl.name
+    // );
    
     // Details of the uploaded file
-    console.log(fileUrl);
    
     // Request made to the backend api
     // Send formData object
