@@ -11,7 +11,10 @@ export default function Mode() {
         Sign Up
       </Button>
 
-      <Modal className="mt-5" show={show} onHide={handleClose} size="lg">
+      <Modal className="mt-5 pt-5" show={show} onHide={handleClose} size="lg">
+        <div className="mt-5 pt-5">
+
+        </div>
         <Modal.Header closeButton>
           <Modal.Title>Create Profile</Modal.Title>
         </Modal.Header>
