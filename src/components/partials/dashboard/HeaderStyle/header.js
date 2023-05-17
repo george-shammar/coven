@@ -62,6 +62,8 @@ const Header = () => {
   const [fileUrl, setFileUrl] = useState(null);
   const [status, setStatus] = useState("");
   const [profile, setProfile] = useState("");
+  const [basicModal, setBasicModal] = useState(false);
+  const toggleShow = () => setBasicModal(!basicModal);
 
   
   async function onChange(e) {
@@ -665,7 +667,7 @@ const Header = () => {
             
               <Nav.Item as="li">
                 <Link to="/" className="d-flex align-items-center">
-                                <Button variant="primary" onClick={onSignUp}>
+                                <Button variant="primary">
                                 Sign Up
                                 </Button>
                                
