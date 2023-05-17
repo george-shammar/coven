@@ -7,18 +7,15 @@ export default function Mode() {
   const handleShow = () => setShow(true);
   return (
     <>
-      {/* <Button className="nextButton" >
-        Sign Up
-      </Button> */}
       <Button variant="primary" onClick={handleShow}>
         Sign Up
       </Button>
 
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Create Profile</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>Every profile is an NFT!</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
