@@ -21,7 +21,7 @@ export default function Mode({walletAd}) {
   function onFileChange(e) {
     // Update the state
     const file = e.target.files[0];
-    console.log(walletAd)
+  
    // const url = `https://ipfs.infura.io/ipfs/${file}`
     // Create an object of formData
     // const formData = new FormData();
@@ -57,8 +57,8 @@ export default function Mode({walletAd}) {
   };
 
   async function createProfile() {
-    const {handle} = formInput;
-    if (!handle) return
+    // const {handle} = formInput;
+    // if (!handle) return
     // if (!fileUrl) {
     //   fileUrl = 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX'
     // }
@@ -91,37 +91,38 @@ export default function Mode({walletAd}) {
     //   handle, image: fileUrl
     // })
 
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
-    const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
+    // const provider = new ethers.providers.Web3Provider(window.ethereum);
+    // const signer = provider.getSigner();
+    // const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
 
-      try {
-        const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
-        const inputStruct = {
-          to: walletAd,
-          handle: handle,
-          imageURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
-          followModule: ZERO_ADDRESS,
-          followModuleInitData: [],
-          followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
-        };
+    //   try {
+    //     const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
+    //     const inputStruct = {
+    //       to: walletAd,
+    //       handle: handle,
+    //       imageURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
+    //       followModule: ZERO_ADDRESS,
+    //       followModuleInitData: [],
+    //       followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
+    //     };
 
-        const transaction = await contract.createProfile(inputStruct);
-        const receipt = await transaction.wait();
-          if (receipt.status === 0) {
-              throw new Error("Transaction failed");
-          } else {
-          console.log(receipt.status)
-          }
+    //     const transaction = await contract.createProfile(inputStruct);
+    //     const receipt = await transaction.wait();
+    //       if (receipt.status === 0) {
+    //           throw new Error("Transaction failed");
+    //       } else {
+    //       console.log(receipt.status)
+    //       }
 
-      } catch (error) {
-        if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
-          return;
-        }
-        console.error(error);
-      } finally {
+    //   } catch (error) {
+    //     if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
+    //       return;
+    //     }
+    //     console.error(error);
+    //   } finally {
   
-      }
+    //   }
+      handleClose();
     };
    
 
@@ -162,8 +163,8 @@ export default function Mode({walletAd}) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
+          <Button variant="primary" onClick={createProfile}>
+            Mint Profile NFT!
           </Button>
         </Modal.Footer>
       </Modal>
