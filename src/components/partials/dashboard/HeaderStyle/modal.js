@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {Modal, Button} from 'react-bootstrap';
+import { NFTStorage, File } from 'nft.storage'
 import { ethers } from "ethers";
 import LensHubAddress from "../../../../contracts/contract-address.json";
 import LensHubArtifact from "../../../../contracts/LensHub.json";
@@ -8,6 +9,7 @@ const FormData = require('form-data');
 const {fs} = require("fs");
 // import FormData from "form-data";
 const JWT = `Bearer ${process.env.REACT_APP_PINATA_JWT}`
+const NFT_STORAGE_KEY  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDMyNTlEMWEzNTNEMzgyNjQ4MDVmNkY4Y2NjMTY0RThFODQzM0I0MDYiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY4NDM2MjM4MzEyMiwibmFtZSI6ImNvdmVuIn0.zGwkPzBzjxHdTf8IeOZrHH1U3_xB6UanjXXLPkdCduU"
 
 const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
@@ -20,27 +22,38 @@ export default function Mode({walletAd}) {
 
   async function onFileChange(e) {
     const file = e.target.files[0];
-    
-    const formData = new FormData();
-    formData.append('file', file)
-
-    formData.append("myFile", file);
-    console.log("start pinata")
-    
-    try{
-      const res = await axios.post("https://api.pinata.cloud/pinning/pinFileToIPFS", formData, {
-        maxBodyLength: "Infinity",
-        headers: {
-          'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
-          Authorization: JWT
-        }
+    const image = e.target.files[0];
+    const client = new NFTStorage({ token: NFT_STORAGE_KEY });
+    // const formData = new FormData();
+    // const image = formData.append('file', file);
+    const metadata = await client.store({
+      name: "jango",
+      description: "covven",
+      image
       });
-      console.log(res.data);
-      console.log("success!")
-    } catch (error) {
-      console.log(error);
-      console.log("try again")
-    }
+
+      console.log(metadata.url);
+
+      //"https://ipfs.io/ipfs/bafyreie3kfmtgv6ifdk2qk5evmkmdyhu3ricdxumdt2bcncninstjfarhm/metadata.json"
+      // https://ipfs.io/ipfs/bafybeiawysqru7veenzbdyernf3aequkh2ffdc6gajwwzbpffs5nimmb5q/feed.png
+
+    // formData.append("myFile", file);
+    // console.log("start pinata")
+    
+    // try{
+    //   const res = await axios.post("https://api.pinata.cloud/pinning/pinFileToIPFS", formData, {
+    //     maxBodyLength: "Infinity",
+    //     headers: {
+    //       'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
+    //       Authorization: JWT
+    //     }
+    //   });
+    //   console.log(res.data);
+    //   console.log("success!")
+    // } catch (error) {
+    //   console.log(error);
+    //   console.log("try again")
+    // }
     
 }
 
