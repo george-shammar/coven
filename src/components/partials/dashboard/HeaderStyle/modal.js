@@ -9,7 +9,9 @@ const FormData = require('form-data');
 const PINATA = process.env.REACT_APP_PINATA_JWT
 const JWT = `Bearer ${PINATA}`;
 
-export default function Mode() {
+const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
+
+export default function Mode({walletAd}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -96,7 +98,7 @@ export default function Mode() {
       try {
         const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
         const inputStruct = {
-          to: walletAddress,
+          to: walletAd,
           handle: handle,
           imageURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
           followModule: ZERO_ADDRESS,
