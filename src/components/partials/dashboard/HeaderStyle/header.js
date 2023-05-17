@@ -3,11 +3,7 @@ import { ethers } from "ethers";
 import LensHubAddress from "../../../../contracts/contract-address.json";
 import LensHubArtifact from "../../../../contracts/LensHub.json";
 import { connectWallet, getCurrentWalletConnected } from "../../../../utils/wallet";
-<<<<<<< HEAD
-import Mode from "./modal";
-=======
 import Mode from "./modal"
->>>>>>> ipfs
 
 import {
   Dropdown,
