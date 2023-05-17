@@ -144,6 +144,7 @@ export default function Mode({walletAd}) {
             Every profile is an NFT!
           </p>
           <div>
+            <input className="form-control form-control-sm" type="text" placeholder="wallet address" value={walletAd}/>
             <input type="file" onChange={onFileChange}/>
           </div>
           
