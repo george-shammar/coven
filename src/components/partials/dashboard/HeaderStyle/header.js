@@ -654,10 +654,8 @@ const Header = () => {
             </div>
             <p className="navbar-nav navbar-list">{status}</p>
             <ul className="navbar-nav navbar-list">
-            <Mode />
               <Nav.Item as="li">
                 <Mode />
-                
               </Nav.Item>
               <Nav.Item as="li" className="d-lg-none">
               <div className="iq-search-bar device-search  position-relative">
