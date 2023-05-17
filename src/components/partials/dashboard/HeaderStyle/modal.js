@@ -4,8 +4,9 @@ import { ethers } from "ethers";
 import LensHubAddress from "../../../../contracts/contract-address.json";
 import LensHubArtifact from "../../../../contracts/LensHub.json";
 import axios from 'axios';
-const fs = require('fs');
-const FormData = require('form-data');
+// const FormData = require('form-data');
+import FormData from "form-data";
+const JWT = `Bearer ${process.env.REACT_APP_PINATA_JWT}`
 
 const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
@@ -13,49 +14,91 @@ export default function Mode({walletAd}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [fileUrl, setFileUrl] = useState(null);
+  const [uploadedFile, setUploadedFile] = useState(null);
   const [formInput, updateFormInput] = useState({handle:""});
 
-  function onFileChange(e) {
-    // Update the state
+  async function onFileChange(e) {
+    const file = e.target.files[0];
+    // Create an object of formData
+   const formData = new FormData();
+
+    // Update the formData object
+    formData.append("myFile", file);
+    console.log("start pinata")
+    
+    try{
+      const res = await axios.post("https://api.pinata.cloud/pinning/pinFileToIPFS", formData, {
+        maxBodyLength: "Infinity",
+        headers: {
+          'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
+          Authorization: JWT
+        }
+      });
+      console.log(res.data);
+      console.log("success!")
+    } catch (error) {
+      console.log(error);
+      console.log("try again")
+    }
+    
+}
+
+  async function onFileUpload(e) {
     const file = e.target.files[0];
 
-    const pinataApiKey = process.env.REACT_APP_PINATA_API_KEY
-    const pinataSecretApiKey = process.env.REACT_APP_PINATA_API_SECRET
-    const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
+    // const pinataApiKey = process.env.REACT_APP_PINATA_API_KEY
+    // const pinataSecretApiKey = process.env.REACT_APP_PINATA_API_SECRET
+    // const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
   
-   // const url = `https://ipfs.infura.io/ipfs/${file}`
-    // Create an object of formData
+    // // Create an object of formData
     // const formData = new FormData();
    
-    // Update the formData object
+    // // Update the formData object
     // formData.append(
     //   "myFile",
-    //   fileUrl
-    //   // fileUrl.name
+    //   file
     // );
-   
+    // console.log("start pinata")
+    // try {
+    //   const response = await axios.post(url,
+    //     formData,
+    //     {
+    //       headers: {
+    //         'Content-Type': `multipart/form-data; boundary= ${formData._boundary}`,
+    //         'pinata_api_key': pinataApiKey,
+    //         'pinata_secret_api_key': pinataSecretApiKey
+    //       }
+    //     });
+    //   console.log("is response possible?");
+    //   console.log(response);
+    //   console.log("yes it is?");
+    // } catch (error) {
+    //   console.log("error it is");
+    //   console.log(error);
+    // }
+        
     // Details of the uploaded file
-    
+   // axios.post("api/uploadfile", formData);
+   
   };
 
-  function onFileUpload() {
-    // Create an object of formData
-    // const formData = new FormData();
+  // function onFileUpload() {
+  //   // Create an object of formData
+  //   // const formData = new FormData();
    
-    // Update the formData object
-    // formData.append(
-    //   "myFile",
-    //   fileUrl,
-    //   fileUrl.name
-    // );
+  //   // Update the formData object
+  //   // formData.append(
+  //   //   "myFile",
+  //   //   fileUrl,
+  //   //   fileUrl.name
+  //   // );
    
-    // Details of the uploaded file
+  //   // Details of the uploaded file
    
-    // Request made to the backend api
-    // Send formData object
-    // axios.post("api/uploadfile", formData);
-  };
+  //   // Request made to the backend api
+  //   // Send formData object
+  //   // axios.post("api/uploadfile", formData);
+  // };
 
   async function createProfile() {
     // const {handle} = formInput;
@@ -164,7 +207,7 @@ export default function Mode({walletAd}) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={createProfile}>
+          <Button variant="primary" onClick={onFileUpload}>
             Mint Profile NFT!
           </Button>
         </Modal.Footer>
