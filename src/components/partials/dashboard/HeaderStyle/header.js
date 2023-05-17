@@ -657,6 +657,7 @@ const Header = () => {
                                 <Button variant="primary">
                                 Sign Up
                                 </Button>
+                               
                 </Link>
               </Nav.Item>
               <Nav.Item as="li" className="d-lg-none">
