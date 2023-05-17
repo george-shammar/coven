@@ -10,7 +10,7 @@ import {
   MDBModalFooter,
 } from 'mdb-react-ui-kit';
 
-export default function Modal() {
+export default function Mode() {
   const [basicModal, setBasicModal] = useState(false);
 
   const toggleShow = () => setBasicModal(!basicModal);
@@ -26,7 +26,7 @@ export default function Modal() {
               <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
             </MDBModalHeader>
             <MDBModalBody>
-              
+
             </MDBModalBody>
 
             <MDBModalFooter>

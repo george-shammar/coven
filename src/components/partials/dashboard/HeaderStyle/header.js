@@ -3,7 +3,17 @@ import { ethers } from "ethers";
 import LensHubAddress from "../../../../contracts/contract-address.json";
 import LensHubArtifact from "../../../../contracts/LensHub.json";
 import { connectWallet, getCurrentWalletConnected } from "../../../../utils/wallet";
-import Modal from "./modal";
+
+import {
+  MDBBtn,
+  MDBModal,
+  MDBModalDialog,
+  MDBModalContent,
+  MDBModalHeader,
+  MDBModalTitle,
+  MDBModalBody,
+  MDBModalFooter,
+} from 'mdb-react-ui-kit';
 
 import {
   Dropdown,
@@ -655,7 +665,7 @@ const Header = () => {
             
               <Nav.Item as="li">
                 <Link to="/" className="d-flex align-items-center">
-                                <Button variant="primary">
+                                <Button variant="primary" onClick={onSignUp}>
                                 Sign Up
                                 </Button>
                                
