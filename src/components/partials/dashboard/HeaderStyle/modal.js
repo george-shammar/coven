@@ -11,7 +11,7 @@ export default function Mode() {
         Sign Up
       </Button>
 
-      <Modal show={show} onHide={handleClose} size="lg">
+      <Modal className="mt-5" show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Create Profile</Modal.Title>
         </Modal.Header>
@@ -20,8 +20,8 @@ export default function Mode() {
             Every profile is an NFT!
           </p>
           <div>
-                                  <input type="file" />
-                                </div>
+            <input type="file" />
+          </div>
           
         </Modal.Body>
         <Modal.Footer>
