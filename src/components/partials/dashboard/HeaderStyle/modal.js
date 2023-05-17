@@ -1,43 +1,41 @@
-import React, { useState } from 'react';
-import {
-  MDBBtn,
-  MDBModal,
-  MDBModalDialog,
-  MDBModalContent,
-  MDBModalHeader,
-  MDBModalTitle,
-  MDBModalBody,
-  MDBModalFooter,
-} from 'mdb-react-ui-kit';
+import React, {useState} from "react";
+import {Modal, Button} from 'react-bootstrap';
 
 export default function Mode() {
-  const [basicModal, setBasicModal] = useState(false);
-
-  const toggleShow = () => setBasicModal(!basicModal);
-
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <>
-      <MDBBtn onClick={toggleShow}>Create Profile</MDBBtn>
-      <MDBModal show={basicModal} setShow={setBasicModal} tabIndex='-1'>
-        <MDBModalDialog>
-          <MDBModalContent>
-            <MDBModalHeader>
-              <MDBModalTitle>Modal title</MDBModalTitle>
-              <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
-            </MDBModalHeader>
-            <MDBModalBody>
+      <Button className="d-flex align-items-center mt-lg-3" variant="primary" onClick={handleShow}>
+        Sign Up
+      </Button>
 
-            </MDBModalBody>
+      <Modal className="mt-5 pt-5" show={show} onHide={handleClose} size="lg">
+        <div className="mt-5 pt-5">
 
-            <MDBModalFooter>
-              <MDBBtn color='secondary' onClick={toggleShow}>
-                Close
-              </MDBBtn>
-              <MDBBtn>Save changes</MDBBtn>
-            </MDBModalFooter>
-          </MDBModalContent>
-        </MDBModalDialog>
-      </MDBModal>
+        </div>
+        <Modal.Header closeButton>
+          <Modal.Title>Create Profile</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            Every profile is an NFT!
+          </p>
+          <div>
+            <input type="file" />
+          </div>
+          
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }

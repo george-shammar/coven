@@ -3,7 +3,11 @@ import { ethers } from "ethers";
 import LensHubAddress from "../../../../contracts/contract-address.json";
 import LensHubArtifact from "../../../../contracts/LensHub.json";
 import { connectWallet, getCurrentWalletConnected } from "../../../../utils/wallet";
+<<<<<<< HEAD
 import Mode from "./modal";
+=======
+import Mode from "./modal"
+>>>>>>> ipfs
 
 import {
   Dropdown,
@@ -656,24 +660,9 @@ const Header = () => {
             <ul className="navbar-nav navbar-list">
             <Mode />
               <Nav.Item as="li">
-                <Link className="d-flex align-items-center">
-                                <Button variant="primary">
-                                Sign Up
-                                </Button> 
-                                
-
-
-
-
-
-
-
-
-
-
-
-
-
+                <Mode />
+                
+              </Nav.Item>
               <Nav.Item as="li" className="d-lg-none">
               <div className="iq-search-bar device-search  position-relative">
               <form
