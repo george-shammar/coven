@@ -12,8 +12,7 @@ import {
   Card,
   Container,
   Image,
-  Modal,
-  Button
+  Modal
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -36,44 +35,13 @@ import user15 from "../../../../assets/images/page-img/02.jpg";
 import user16 from "../../../../assets/images/page-img/01.jpg";
 //Componets
 import CustomToggle from "../../../dropdowns";
-import axios from 'axios';
-// import fs from "fs";
-const fs = require('fs');
-const FormData = require('form-data');
 
-const PINATA = process.env.REACT_APP_PINATA_JWT
-
-const JWT = `Bearer ${PINATA}`;
 const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
 const Header = () => {
   const [walletAddress, setWallet] = useState("");
-  const [formInput, updateFormInput] = useState({handle:""});
-  const [fileUrl, setFileUrl] = useState(null);
   const [status, setStatus] = useState("");
   const [profile, setProfile] = useState("");
-  const [basicModal, setBasicModal] = useState(false);
-  const toggleShow = () => setBasicModal(!basicModal);
-
-  
-  async function onChange(e) {
-    const file = e.target.files[0];
-    // console.log('hello')
-    // try {
-    //     // const added = await client.add(
-    //     //     file,
-    //     //     {
-    //     //         progress: (prog) => console.log(`received: ${prog}`)
-    //     //     }
-    //     // )
-    //     const url = `'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS'`
-        setFileUrl(file);
-    //     console.log(url);
-    // } catch (e) {
-    //     console.log(e);
-    // }
-    console.log("image")
-  }
 
   useEffect(() => {
     (async() => {

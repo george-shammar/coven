@@ -1,11 +1,17 @@
 import React, {useState} from "react";
 import {Modal, Button} from 'react-bootstrap';
+import axios from 'axios';
+const fs = require('fs');
+const FormData = require('form-data');
+const PINATA = process.env.REACT_APP_PINATA_JWT
+const JWT = `Bearer ${PINATA}`;
 
 export default function Mode() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [fileUrl, setFileUrl] = useState(null);
+  const [formInput, updateFormInput] = useState({handle:""});
 
   function onFileChange(e) {
     // Update the state
