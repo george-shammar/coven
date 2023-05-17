@@ -15,7 +15,15 @@ export default function Mode() {
         <Modal.Header closeButton>
           <Modal.Title>Create Profile</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Every profile is an NFT!</Modal.Body>
+        <Modal.Body>
+          <p>
+            Every profile is an NFT!
+          </p>
+          <div>
+                                  <input type="file" />
+                                </div>
+          
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close

@@ -657,13 +657,8 @@ const Header = () => {
             <ul className="navbar-nav navbar-list">
             
               <Nav.Item as="li">
-                <Link to="/" className="d-flex align-items-center">
-                  
-                                {/* <Button variant="primary" onClick={handleShow4}>
-                                Sign Up
-                                </Button> */}
-                                <Mode />
-                </Link>
+                <Mode className="d-flex align-items-center"/>
+                
               </Nav.Item>
               <Nav.Item as="li" className="d-lg-none">
               <div className="iq-search-bar device-search  position-relative">
