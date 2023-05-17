@@ -657,7 +657,7 @@ const Header = () => {
             <ul className="navbar-nav navbar-list">
             
               <Nav.Item as="li">
-                <Mode className="d-flex align-items-center"/>
+                <Mode />
                 
               </Nav.Item>
               <Nav.Item as="li" className="d-lg-none">

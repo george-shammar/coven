@@ -7,7 +7,7 @@ export default function Mode() {
   const handleShow = () => setShow(true);
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button className="d-flex align-items-center mt-lg-3" variant="primary" onClick={handleShow}>
         Sign Up
       </Button>
 
