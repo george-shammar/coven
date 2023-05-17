@@ -6,8 +6,6 @@ import { connectWallet, getCurrentWalletConnected } from "../../../../utils/wall
 
 import {
   Dropdown,
-  Col,
-  Row,
   Nav,
   Form,
   Card,
@@ -49,9 +47,6 @@ const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
 const Header = () => {
   const [walletAddress, setWallet] = useState("");
-  const [show4, setShow4] = useState(false);
-  const handleClose4 = () => setShow4(false);
-  const handleShow4 = () => setShow4(true);
   const [formInput, updateFormInput] = useState({handle:""});
   const [fileUrl, setFileUrl] = useState(null);
   const [status, setStatus] = useState("");
