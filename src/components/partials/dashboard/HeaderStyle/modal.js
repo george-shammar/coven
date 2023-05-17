@@ -4,8 +4,9 @@ import { ethers } from "ethers";
 import LensHubAddress from "../../../../contracts/contract-address.json";
 import LensHubArtifact from "../../../../contracts/LensHub.json";
 import axios from 'axios';
-// const FormData = require('form-data');
-import FormData from "form-data";
+const FormData = require('form-data');
+const {fs} = require("fs");
+// import FormData from "form-data";
 const JWT = `Bearer ${process.env.REACT_APP_PINATA_JWT}`
 
 const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
@@ -19,10 +20,10 @@ export default function Mode({walletAd}) {
 
   async function onFileChange(e) {
     const file = e.target.files[0];
-    // Create an object of formData
-   const formData = new FormData();
+    
+    const formData = new FormData();
+    formData.append('file', file)
 
-    // Update the formData object
     formData.append("myFile", file);
     console.log("start pinata")
     
