@@ -1,5 +1,8 @@
 import React, {useState} from "react";
 import {Modal, Button} from 'react-bootstrap';
+import { ethers } from "ethers";
+import LensHubAddress from "../../../../contracts/contract-address.json";
+import LensHubArtifact from "../../../../contracts/LensHub.json";
 import axios from 'axios';
 const fs = require('fs');
 const FormData = require('form-data');
@@ -50,6 +53,74 @@ export default function Mode() {
     // Send formData object
     // axios.post("api/uploadfile", formData);
   };
+
+  async function createProfile() {
+    const {handle} = formInput;
+    if (!handle) return
+    // if (!fileUrl) {
+    //   fileUrl = 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX'
+    // }
+
+  //    const pinataApiKey = process.env.REACT_APP_PINATA_API_KEY
+  //    const pinataSecretApiKey = process.env.REACT_APP_PINATA_API_SECRET
+  //    const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
+  // // //we gather a local file from the API for this example, but you can gather the file from anywhere
+  //    let data = new FormData();
+     
+  //    data.append('file', fs.createReadStream("../../../../assets/images/user/1.jpg"));
+  //    return axios.post(url,
+  //         data,
+  //             {
+  //               headers: {
+  //                 'Content-Type': `multipart/form-data; boundary= ${data._boundary}`,
+  //                 'pinata_api_key': pinataApiKey,
+  //                 'pinata_secret_api_key': pinataSecretApiKey
+  //            }
+  //          }
+     
+  //     ).then(function (response) {
+  //         console.log(response);
+  //     }).catch(function (error) {
+  //          console.log(error);
+  //      });
+    
+
+    // const data = JSON.stringify({
+    //   handle, image: fileUrl
+    // })
+
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
+
+      try {
+        const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
+        const inputStruct = {
+          to: walletAddress,
+          handle: handle,
+          imageURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
+          followModule: ZERO_ADDRESS,
+          followModuleInitData: [],
+          followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
+        };
+
+        const transaction = await contract.createProfile(inputStruct);
+        const receipt = await transaction.wait();
+          if (receipt.status === 0) {
+              throw new Error("Transaction failed");
+          } else {
+          console.log(receipt.status)
+          }
+
+      } catch (error) {
+        if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
+          return;
+        }
+        console.error(error);
+      } finally {
+  
+      }
+    };
    
 
 
