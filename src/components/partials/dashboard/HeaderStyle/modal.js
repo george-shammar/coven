@@ -21,7 +21,7 @@ export default function Mode({walletAd}) {
   function onFileChange(e) {
     // Update the state
     const file = e.target.files[0];
-    console.log(file);
+    console.log(walletAd)
    // const url = `https://ipfs.infura.io/ipfs/${file}`
     // Create an object of formData
     // const formData = new FormData();
@@ -141,11 +141,20 @@ export default function Mode({walletAd}) {
         </Modal.Header>
         <Modal.Body>
           <p>
-            Every profile is an NFT!
+            A new way to register... Every profile is an NFT!
           </p>
           <div>
-            <input className="form-control form-control-sm" type="text" placeholder="wallet address" value={walletAd}/>
-            <input type="file" onChange={onFileChange}/>
+            <div>
+              <label>Wallet Address *</label>
+              <input className="form-control form-control-sm" type="text" placeholder="wallet address"/>
+            </div>
+            <div className="pt-3">
+              <label>Profile Handle *</label>
+              <input className="form-control form-control-sm" type="text" placeholder="profile handle"/>
+            </div>
+            
+            
+            <input className="pt-3" type="file" onChange={onFileChange}/>
           </div>
           
         </Modal.Body>
