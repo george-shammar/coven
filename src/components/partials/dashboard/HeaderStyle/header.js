@@ -1,20 +1,15 @@
-import { useEffect, useState } from "react";
-import { ethers } from "ethers";
-import LensHubAddress from "../../../../contracts/contract-address.json";
-import LensHubArtifact from "../../../../contracts/LensHub.json";
+import React, { useEffect, useState } from 'react';
 import { connectWallet, getCurrentWalletConnected } from "../../../../utils/wallet";
+import Mode from "./modal"
 
 import {
   Dropdown,
-  Col,
-  Row,
   Nav,
   Form,
   Card,
   Container,
   Image,
-  Modal,
-  Button
+  Modal
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -37,74 +32,11 @@ import user15 from "../../../../assets/images/page-img/02.jpg";
 import user16 from "../../../../assets/images/page-img/01.jpg";
 //Componets
 import CustomToggle from "../../../dropdowns";
-import axios from 'axios';
-// import fs from "fs";
-const fs = require('fs');
-const FormData = require('form-data');
-
-const PINATA = process.env.REACT_APP_PINATA_JWT
-
-const JWT = `Bearer ${PINATA}`;
-const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
 const Header = () => {
   const [walletAddress, setWallet] = useState("");
-  const [show4, setShow4] = useState(false);
-  const handleClose4 = () => setShow4(false);
-  const handleShow4 = () => setShow4(true);
-  const [formInput, updateFormInput] = useState({handle:""});
-  const [fileUrl, setFileUrl] = useState(null);
   const [status, setStatus] = useState("");
   const [profile, setProfile] = useState("");
-
-  
-  // async function onChange(e) {
-  //   const file = e.target.files[0];
-  //   // console.log('hello')
-  //   // try {
-  //   //     // const added = await client.add(
-  //   //     //     file,
-  //   //     //     {
-  //   //     //         progress: (prog) => console.log(`received: ${prog}`)
-  //   //     //     }
-  //   //     // )
-  //   //     const url = `'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS'`
-        
-  //   //     console.log(url);
-  //   // } catch (e) {
-  //   //     console.log(e);
-  //   // }
-  //   console.log("image")
-  // }
-  
-  function onChange(event) {
-    /** @type {HTMLFormElement} */
-    const form = event.currentTarget;
-    const url = new URL(form.action);
-    const formData = new FormData(form);
-    const searchParams = new URLSearchParams(formData);
-  
-    console.log(url)
-
-    /** @type {Parameters<fetch>[1]} */
-    const fetchOptions = {
-      method: form.method,
-    };
-  
-    if (form.method.toLowerCase() === 'post') {
-      if (form.enctype === 'multipart/form-data') {
-        fetchOptions.body = formData;
-      } else {
-        fetchOptions.body = searchParams;
-      }
-    } else {
-      url.search = searchParams;
-    }
-  
-    fetch(url, fetchOptions);
-  
-    event.preventDefault();
-  }
 
   useEffect(() => {
     (async() => {
@@ -137,81 +69,6 @@ const Header = () => {
       });
       } 
   }
-  
-
-
-
-  async function createProfile() {
-    const {handle} = formInput;
-    if (!handle) return
-    // if (!fileUrl) {
-    //   fileUrl = 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX'
-    // }
-
-  //    const pinataApiKey = process.env.REACT_APP_PINATA_API_KEY
-  //    const pinataSecretApiKey = process.env.REACT_APP_PINATA_API_SECRET
-  //    const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
-  // // //we gather a local file from the API for this example, but you can gather the file from anywhere
-  //    let data = new FormData();
-     
-  //    data.append('file', fs.createReadStream("../../../../assets/images/user/1.jpg"));
-  //    return axios.post(url,
-  //         data,
-  //             {
-  //               headers: {
-  //                 'Content-Type': `multipart/form-data; boundary= ${data._boundary}`,
-  //                 'pinata_api_key': pinataApiKey,
-  //                 'pinata_secret_api_key': pinataSecretApiKey
-  //            }
-  //          }
-     
-  //     ).then(function (response) {
-  //         console.log(response);
-  //     }).catch(function (error) {
-  //          console.log(error);
-  //      });
-    
-
-    // const data = JSON.stringify({
-    //   handle, image: fileUrl
-    // })
-
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
-    const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
-
-      try {
-        const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
-        const inputStruct = {
-          to: walletAddress,
-          handle: handle,
-          imageURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
-          followModule: ZERO_ADDRESS,
-          followModuleInitData: [],
-          followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
-        };
-
-        const transaction = await contract.createProfile(inputStruct);
-        const receipt = await transaction.wait();
-          if (receipt.status === 0) {
-              throw new Error("Transaction failed");
-          } else {
-          console.log(receipt.status)
-          }
-
-      } catch (error) {
-        if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
-          return;
-        }
-        console.error(error);
-      } finally {
-  
-      }
-    };
-
-    
-     
-    
 
   const minisidebar = () => {
     document.getElementsByTagName("ASIDE")[0].classList.toggle("sidebar-mini");
@@ -685,96 +542,8 @@ const Header = () => {
             </div>
             <p className="navbar-nav navbar-list">{status}</p>
             <ul className="navbar-nav navbar-list">
-            
               <Nav.Item as="li">
-                <Link to="/" className="d-flex align-items-center">
-                  
-                                <Button variant="primary" onClick={handleShow4}>
-                                Sign Up
-                                </Button>{' '}
-                                <Modal size="lg" show={show4} onHide={handleClose4}>
-                                    <Modal.Header closeButton>
-                                        <Modal.Title>Modal heading</Modal.Title>
-                                    </Modal.Header>
-                                 
-
-
-
-          <div id='content-page' className='content-page'>
-            <Container>
-                <Row>
-                    <Col sm="12" lg="12">
-                        <Card>
-                            <Card.Header className="d-flex justify-content-between">
-                                <div className="header-title">
-                                    <h4 className="card-title">A new way to register..</h4>
-                                </div>
-                            </Card.Header>
-                            <Card.Body>
-                                <Form id="form-wizard1" className="text-center mt-3">
-                                   
-                                    <fieldset >
-                                        <div className="form-card text-start">
-                                           
-                                            <Row>
-                                                <Col md="6">
-                                                    <Form.Group className="form-group">
-                                                        <Form.Label>Wallet Address: *</Form.Label>
-                                                        <Form.Control type="email" name="email" placeholder={walletAddress} />
-                                                    </Form.Group>
-                                                </Col>
-                                                <Col md="6">
-                                                    <Form.Group className="form-group">
-                                                        <Form.Label>Profile Handle: *</Form.Label>
-                                                        <Form.Control type="text" name="uname" placeholder="handle" 
-                                                        onChange={e => updateFormInput({...formInput, handle: e.target.value})}
-                                                        required />
-                                                    </Form.Group>
-                                                </Col>
-                                                <Col md="6">
-                                                  <input type="file"/>
-                                                    {/* <Form.Group className="form-group">
-                                                        <Form.Label>Image: </Form.Label>
-                                                        <input type="file" name="pic" accept="image/*"
-                                                        onChange={onChange} />
-                                                         <div>
-                                                          {
-                                                              fileUrl && (
-                                                                  <img src={fileUrl} alt=""/>
-                                                              )
-                                                          }
-                                                          </div>
-                                                    </Form.Group> */}
-                                                    
-                                                </Col>
-                                             
-                                            </Row>
-                                        </div>
-                                       
-                                    </fieldset>
-                                </Form>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                </Row>
-            </Container>
-            </div>
-
-
-
-
-
-
-                                    <Modal.Footer>
-                                        <Button variant="secondary" onClick={handleClose4}>
-                                            Close
-                                        </Button>
-                                        <Button variant="primary" onClick={createProfile}>
-                                            Create
-                                        </Button>
-                                    </Modal.Footer>
-                                </Modal>
-                </Link>
+                <Mode walletAd={walletAddress}/>
               </Nav.Item>
               <Nav.Item as="li" className="d-lg-none">
               <div className="iq-search-bar device-search  position-relative">
