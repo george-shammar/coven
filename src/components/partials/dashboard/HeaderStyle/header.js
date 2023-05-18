@@ -1238,7 +1238,6 @@ const Header = () => {
 
               
               <Dropdown as="li" className="nav-item user-dropdown">
-              {walletAddress.length > 0 ? (
                 <Dropdown.Toggle
                   href="#"
                   as={CustomToggle}
@@ -1254,24 +1253,7 @@ const Header = () => {
                       <h6 className="mb-0 line-height">{profileHandle}</h6>
                     </div>
                     </Dropdown.Toggle>
-                      ) : (
-
-                        <Dropdown.Toggle
-                        href="#"
-                        as={CustomToggle}
-                        variant="d-flex align-items-center"
-                      >
-                            {/* <Image
-                            src=""
-                            className="img-fluid rounded-circle me-3"
-                            alt="user"
-                            loading="lazy"
-                          /> */}
-                          <div className="caption d-none d-lg-block">
-                            <h6 className="mb-0 line-height">Anon</h6>
-                          </div>
-                          </Dropdown.Toggle>
-                      )}
+                     
                 <Dropdown.Menu className="sub-drop caption-menu">
                   <Card className="shadow-none m-0">
                     <Card.Header>
