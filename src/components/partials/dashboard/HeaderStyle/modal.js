@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import {Modal, Button} from 'react-bootstrap';
 import { NFTStorage, File } from 'nft.storage'
 import { ethers } from "ethers";
@@ -13,54 +13,63 @@ export default function Mode({walletAd}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [imageUrl, setImageUrl] = useState("");
+  const [fileUrl, setFileUrl] = useState(null);
   const [formInput, updateFormInput] = useState({handle:""});
+  const [status, setStatus] = useState("");
 
-  const {handle} = formInput;
+  // const {handle} = formInput;
+
 
   async function onFileChange(e) {
-    if (!handle) return
+    // if (!handle) return
     const image = e.target.files[0];
-    // const client = new NFTStorage({ token: NFT_STORAGE_KEY });
-    // const metadata = await client.store({
-    //   name: "jango",
-    //   description: "covven",
-    //   image
-    // });
 
-      // const metadataURI = metadata.url
-      // const profileImage = metadataURI.image
+    // // const client = new NFTStorage({ token: NFT_STORAGE_KEY });
+    // // const metadata = await client.store({
+    // //   name: handle,
+    // //   description: "covven profile",
+    // //   image
+    // // });
 
+    //   // const metadataURI = metadata.url
+    //   // const profileImage = metadataURI.image
 
-      const profileImage = "ipfs//:bafybeiawysqru7veenzbdyernf3aequkh2ffdc6gajwwzbpffs5nimmb5q/feed.png";
-      setImageUrl(profileImage);
-      // const newUrl = `https://ipfs.io/ipfs/${profileImage.replace("ipfs//:","")}`;
+    const profileImage = "ipfs//:bafybeiawysqru7veenzbdyernf3aequkh2ffdc6gajwwzbpffs5nimmb5q/feed.png";
+    setFileUrl(profileImage);
+    //   // const newUrl = `https://ipfs.io/ipfs/${profileImage.replace("ipfs//:","")}`;
 }
 
 
   async function createProfile() {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
-    const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
+    const {handle} = formInput;
+    if (!handle) return
+    
+      setStatus("creating profile... if successful close this window")
+      // const newUrl = `https://ipfs.io/ipfs/${profileImage.replace("ipfs//:","")}`;
 
+
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
+    
       try {
         const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
         const inputStruct = {
           to: walletAd,
           handle: handle,
-          imageURI: imageUrl,
+          imageURI: fileUrl,
           followModule: ZERO_ADDRESS,
           followModuleInitData: [],
           followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
         };
         console.log(inputStruct)
-        // const transaction = await contract.createProfile(inputStruct);
-        // const receipt = await transaction.wait();
-        //   if (receipt.status === 0) {
-        //       throw new Error("Transaction failed");
-        //   } else {
-        //   console.log(receipt.status)
-        //   }
+        const transaction = await contract.createProfile(inputStruct);
+        const receipt = await transaction.wait();
+          if (receipt.status === 0) {
+              throw new Error("Transaction failed");
+          } else {
+            setStatus("Successful!")
+          }
 
       } catch (error) {
         if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
@@ -70,7 +79,7 @@ export default function Mode({walletAd}) {
       } finally {
   
       }
-      handleClose();
+      // handleClose();
     };
    
 
@@ -105,7 +114,7 @@ export default function Mode({walletAd}) {
             <label>Profile Image *</label>
             <input className="pt-3" type="file" onChange={onFileChange}/>
           </div>
-          
+          <>{status}</>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
