@@ -14,35 +14,10 @@ import Todo from "../views/dashboard/app/todo";
 import UserAccountSetting from "../views/dashboard/app/user-account-setting";
 import UserProfileEdit from "../views/dashboard/app/user-profile-edit";
 
-// icon
-import Remixicon from "../views/dashboard/icons/icon-remixicon";
-import Lineawesome from "../views/dashboard/icons/icon-lineawesome";
-import Fontawesome from "../views/dashboard/icons/icon-fontawesome-5";
-import Material from "../views/dashboard/icons/icon-material";
-
-// Form
-import FormElement from "../views/dashboard/from/form-element";
-import FormValidation from "../views/dashboard/from/form-validation";
-import FormSwitch from "../views/dashboard/from/form-switch";
-import FormWizard from "../views/dashboard/from/form-wizard";
-import FormWizardValidate from "../views/dashboard/from/form-wizard-validate";
-import FormWizardVertical from "../views/dashboard/from/form-wizard-vertical";
-import FormCheckbox from "../views/dashboard/from/form-checkbox";
-import FormRadio from "../views/dashboard/from/form-radio";
-
-// table
-import DataTable from "../views/dashboard/table/data-table";
-import TableBasic from "../views/dashboard/table/tables-basic";
-import TableEditable from "../views/dashboard/table/table-editable";
-
 // blog pages
 import BlogGrid from "../views/dashboard/blog/bloggrid";
 import BlogList from "../views/dashboard/blog/bloglist";
 import BlogDetail from "../views/dashboard/blog/blogdetail";
-
-// Email
-import Email from "../views/dashboard/email/email";
-import EmailCompose from "../views/dashboard/email/email-compose";
 
 // extrapages
 import Pricing from "../views/dashboard/extrapages/pricing";
@@ -104,54 +79,7 @@ export const DefaultRouter = [
     path: "dashboard/app/user-profile-edit",
     element: <UserProfileEdit />,
   },
-  {
-    path: "dashboard/icon/fontawesome-5",
-    element: <Fontawesome />,
-  },
-  {
-    path: "dashboard/icon/remixicon",
-    element: <Remixicon />,
-  },
-  {
-    path: "dashboard/icon/lineawesome",
-    element: <Lineawesome />,
-  },
-  {
-    path: "dashboard/icon/material",
-    element: <Material />,
-  },
-  {
-    path: "dashboard/form/form-elemen",
-    element: <FormElement />,
-  },
-  {
-    path: "dashboard/form/form-validation",
-    element: <FormValidation />,
-  },
-  {
-    path: "dashboard/form/form-switch",
-    element: <FormSwitch />,
-  },
-  {
-    path: "dashboard/form/form-wizard",
-    element: <FormWizard />,
-  },
-  {
-    path: "dashboard/form/form-wizard-validate",
-    element: <FormWizardValidate />,
-  },
-  {
-    path: "dashboard/form/form-wizard-vertical",
-    element: <FormWizardVertical />,
-  },
-  {
-    path: "dashboard/form/form-checkbox",
-    element: <FormCheckbox />,
-  },
-  {
-    path: "dashboard/form/form-radio",
-    element: <FormRadio />,
-  },
+  
   {
     path: "dashboard/blog/blog-grid",
     element: <BlogGrid />,
@@ -164,14 +92,7 @@ export const DefaultRouter = [
     path: "dashboard/blog/blog-detail",
     element: <BlogDetail />,
   },
-  {
-    path: "dashboard/Email/email",
-    element: <Email />,
-  },
-  {
-    path: "dashboard/Email/email-compose",
-    element: <EmailCompose />,
-  },
+
   {
     path: "dashboard/extrapages/pages-pricing",
     element: <Pricing />,
@@ -208,51 +129,5 @@ export const DefaultRouter = [
     path: "dashboard/app/admin",
     element: <Admin />,
   },
-  
-  // Table
-  {
-    path: "dashboard/table/data-table",
-    element: <DataTable />,
-  },
-  {
-    path: "dashboard/table/tables-basic",
-    element: <TableBasic />,
-  },
-  {
-    path: "dashboard/table/table-editable",
-    element: <TableEditable />,
-  },
-  // Form
-  {
-    path: "dashboard/form/form-element",
-    element: <FormElement />,
-  },
-  {
-    path: "dashboard/form/form-validation",
-    element: <FormValidation />,
-  },
-  {
-    path: "dashboard/form/form-switch",
-    element: <FormSwitch />,
-  },
-  {
-    path: "dashboard/form/form-wizard",
-    element: <FormWizard />,
-  },
-  {
-    path: "dashboard/form/form-wizard-validate",
-    element: <FormWizardValidate />,
-  },
-  {
-    path: "dashboard/form/form-wizard-vertical",
-    element: <FormWizardVertical />,
-  },
-  {
-    path: "dashboard/form/form-checkbox",
-    element: <FormCheckbox />,
-  },
-  {
-    path: "dashboard/form/form-radio",
-    element: <FormRadio />,
-  },
+
 ];
