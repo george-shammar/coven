@@ -1,173 +1,98 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import {Modal, Button} from 'react-bootstrap';
+import { NFTStorage, File } from 'nft.storage'
 import { ethers } from "ethers";
 import LensHubAddress from "../../../../contracts/contract-address.json";
 import LensHubArtifact from "../../../../contracts/LensHub.json";
-import axios from 'axios';
-const FormData = require('form-data');
-const {fs} = require("fs");
-// import FormData from "form-data";
-const JWT = `Bearer ${process.env.REACT_APP_PINATA_JWT}`
+const NFT_STORAGE_KEY  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDMyNTlEMWEzNTNEMzgyNjQ4MDVmNkY4Y2NjMTY0RThFODQzM0I0MDYiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY4NDM2MjM4MzEyMiwibmFtZSI6ImNvdmVuIn0.zGwkPzBzjxHdTf8IeOZrHH1U3_xB6UanjXXLPkdCduU"
 
 const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
+
 
 export default function Mode({walletAd}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [uploadedFile, setUploadedFile] = useState(null);
+  const [fileUrl, setFileUrl] = useState(null);
   const [formInput, updateFormInput] = useState({handle:""});
+  const [status, setStatus] = useState("");
 
-  async function onFileChange(e) {
-    const file = e.target.files[0];
-    
-    const formData = new FormData();
-    formData.append('file', file)
-
-    formData.append("myFile", file);
-    console.log("start pinata")
-    
-    try{
-      const res = await axios.post("https://api.pinata.cloud/pinning/pinFileToIPFS", formData, {
-        maxBodyLength: "Infinity",
-        headers: {
-          'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
-          Authorization: JWT
-        }
-      });
-      console.log(res.data);
-      console.log("success!")
-    } catch (error) {
-      console.log(error);
-      console.log("try again")
-    }
-    
-}
-
-  async function onFileUpload(e) {
-    const file = e.target.files[0];
-
-    // const pinataApiKey = process.env.REACT_APP_PINATA_API_KEY
-    // const pinataSecretApiKey = process.env.REACT_APP_PINATA_API_SECRET
-    // const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
-  
-    // // Create an object of formData
-    // const formData = new FormData();
-   
-    // // Update the formData object
-    // formData.append(
-    //   "myFile",
-    //   file
-    // );
-    // console.log("start pinata")
-    // try {
-    //   const response = await axios.post(url,
-    //     formData,
-    //     {
-    //       headers: {
-    //         'Content-Type': `multipart/form-data; boundary= ${formData._boundary}`,
-    //         'pinata_api_key': pinataApiKey,
-    //         'pinata_secret_api_key': pinataSecretApiKey
-    //       }
-    //     });
-    //   console.log("is response possible?");
-    //   console.log(response);
-    //   console.log("yes it is?");
-    // } catch (error) {
-    //   console.log("error it is");
-    //   console.log(error);
-    // }
-        
-    // Details of the uploaded file
-   // axios.post("api/uploadfile", formData);
-   
+  // const {handle} = formInput;
+  let styles = {
+    margin: '20px',
+    width: '250px',
+    height: '150px',
   };
 
-  // function onFileUpload() {
-  //   // Create an object of formData
-  //   // const formData = new FormData();
-   
-  //   // Update the formData object
-  //   // formData.append(
-  //   //   "myFile",
-  //   //   fileUrl,
-  //   //   fileUrl.name
-  //   // );
-   
-  //   // Details of the uploaded file
-   
-  //   // Request made to the backend api
-  //   // Send formData object
-  //   // axios.post("api/uploadfile", formData);
-  // };
+  let green = {
+   color: "green"
+  };
+
+  async function onFileChange(e) {
+    // if (!handle) return
+    const image = e.target.files[0];
+
+    // // const client = new NFTStorage({ token: NFT_STORAGE_KEY });
+    // // const metadata = await client.store({
+    // //   name: handle,
+    // //   description: "covven profile",
+    // //   image
+    // // });
+
+    //   // const metadataURI = metadata.url
+    //   // const profileImage = metadataURI.image
+
+    const profileImage = "https://ipfs.io/ipfs/bafybeiawysqru7veenzbdyernf3aequkh2ffdc6gajwwzbpffs5nimmb5q/feed.png";
+    setFileUrl(profileImage);
+    //   // const newUrl = `https://ipfs.io/ipfs/${profileImage.replace("ipfs//:","")}`;
+}
+
 
   async function createProfile() {
-    // const {handle} = formInput;
-    // if (!handle) return
-    // if (!fileUrl) {
-    //   fileUrl = 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX'
-    // }
-
-  //    const pinataApiKey = process.env.REACT_APP_PINATA_API_KEY
-  //    const pinataSecretApiKey = process.env.REACT_APP_PINATA_API_SECRET
-  //    const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
-  // // //we gather a local file from the API for this example, but you can gather the file from anywhere
-  //    let data = new FormData();
-     
-  //    data.append('file', fs.createReadStream("../../../../assets/images/user/1.jpg"));
-  //    return axios.post(url,
-  //         data,
-  //             {
-  //               headers: {
-  //                 'Content-Type': `multipart/form-data; boundary= ${data._boundary}`,
-  //                 'pinata_api_key': pinataApiKey,
-  //                 'pinata_secret_api_key': pinataSecretApiKey
-  //            }
-  //          }
-     
-  //     ).then(function (response) {
-  //         console.log(response);
-  //     }).catch(function (error) {
-  //          console.log(error);
-  //      });
+    const {handle} = formInput;
+    if (!handle) return
     
+      setStatus("creating profile... if successful close this window")
+      // const newUrl = `https://ipfs.io/ipfs/${profileImage.replace("ipfs//:","")}`;
 
-    // const data = JSON.stringify({
-    //   handle, image: fileUrl
-    // })
 
-    // const provider = new ethers.providers.Web3Provider(window.ethereum);
-    // const signer = provider.getSigner();
-    // const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
+    
+      try {
+        const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
+        const inputStruct = {
+          to: walletAd,
+          handle: handle,
+          imageURI: fileUrl,
+          followModule: ZERO_ADDRESS,
+          followModuleInitData: [],
+          followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
+        };
+        console.log(inputStruct)
+        const transaction = await contract.createProfile(inputStruct);
+        const receipt = await transaction.wait();
+          if (receipt.status === 0) {
+              throw new Error("Transaction failed");
+          } else {
+            setStatus("Successful!")
+            setTimeout(() => {
+              handleClose()
+            }, 3000);
+          }
 
-    //   try {
-    //     const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
-    //     const inputStruct = {
-    //       to: walletAd,
-    //       handle: handle,
-    //       imageURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
-    //       followModule: ZERO_ADDRESS,
-    //       followModuleInitData: [],
-    //       followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
-    //     };
-
-    //     const transaction = await contract.createProfile(inputStruct);
-    //     const receipt = await transaction.wait();
-    //       if (receipt.status === 0) {
-    //           throw new Error("Transaction failed");
-    //       } else {
-    //       console.log(receipt.status)
-    //       }
-
-    //   } catch (error) {
-    //     if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
-    //       return;
-    //     }
-    //     console.error(error);
-    //   } finally {
+      } catch (error) {
+        if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
+          setStatus("Transaction cancelled")
+        }
+        setStatus("Successful!")
+        setTimeout(() => {
+          handleClose()
+        }, 3000);
+      } finally {
   
-    //   }
-      handleClose();
+      }
     };
    
 
@@ -186,29 +111,36 @@ export default function Mode({walletAd}) {
           <Modal.Title>Create Profile</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>
-            A new way to register... Every profile is an NFT!
-          </p>
           <div>
             <div>
-              <label>Wallet Address *</label>
-              <input className="form-control form-control-sm" type="text" placeholder="wallet address"/>
+              <label>Connected Wallet Address: {walletAd}</label>
+              {/* <input className="form-control form-control-sm" type="text" placeholder="wallet address"/> */}
             </div>
             <div className="pt-3">
               <label>Profile Handle *</label>
-              <input className="form-control form-control-sm" type="text" placeholder="profile handle"/>
+              <input  onChange={e => updateFormInput({...formInput, handle: e.target.value})}
+                className="form-control form-control-sm" 
+                type="text" 
+                placeholder="profile handle"/>
             </div>
             
-            
+            <label>Profile Image *</label>
             <input className="pt-3" type="file" onChange={onFileChange}/>
+              <div>
+                        {
+                            fileUrl && (
+                                <img style={styles} src={fileUrl} alt=""/>
+                            )
+                        }
+              </div>
           </div>
-          
+          <p className="mt-5" style={green}>{status}</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={onFileUpload}>
+          <Button variant="primary" onClick={createProfile}>
             Mint Profile NFT!
           </Button>
         </Modal.Footer>

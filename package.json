@@ -46,6 +46,7 @@
     "ipfs-http-client": "^60.0.0",
     "jquery": "^3.6.0",
     "leaflet": "^1.7.1",
+    "nft.storage": "^7.0.3",
     "os": "^0.1.2",
     "path": "^0.12.7",
     "prettier": "2.5.0",
