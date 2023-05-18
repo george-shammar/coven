@@ -1,4 +1,7 @@
-import React, { useState, useContext} from 'react'
+import React, { useState, useContext, useEffect} from 'react'
+import { ethers } from "ethers";
+import LensHubAddress from "../../../../contracts/contract-address.json";
+import LensHubArtifact from "../../../../contracts/LensHub.json";
 
 //router
 import { Link, useLocation } from 'react-router-dom'
@@ -28,17 +31,52 @@ function CustomToggle({ children, eventKey, onClick }) {
 const VerticalNav = React.memo(() => {
     const [activeMenu, setActiveMenu] = useState(false)
     const [active, setActive]= useState('')
+    const [totalUsers, setTotalUsers]= useState('')
     //location
     let location = useLocation();
-    // console.log(document);
+
+    
+  useEffect(() => {
+    (async() => {
+      users();
+    }) ()
+  }, []);
+
+
+    async function users() {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
+
+        try {
+            const transaction = await contract.totalSupply();
+           // const receipt = await transaction.wait();
+           const value = transaction._hex;
+           const num = parseInt(value);
+           setTotalUsers(num);
+            //   if (receipt.status === 0) {
+            //       throw new Error("Transaction failed");
+            //   } else {
+            //     setStatus("Successful!")
+            //     setTimeout(() => {
+            //       handleClose()
+            //     }, 3000);
+            //   }
+    
+          } catch (error) {
+            
+          } finally {
+      
+          }
+    }
 
 
     return (
         <React.Fragment>
             <Accordion as="ul" className="navbar-nav iq-main-menu" id="sidebar-menu">
-                <li className="nav-item static-item">
+                <li className="nav-item static-item mt-3">
                     <Link className="nav-link static-item disabled" to="#" tabIndex="-1">
-                        <span className="default-icon">Social</span>
+                        <span className="default-icon">Total Users: {totalUsers}</span>
                         <span className="mini-icon" data-bs-toggle="tooltip" title="Social" data-bs-placement="right">-</span>
                     </Link>
                 </li>
