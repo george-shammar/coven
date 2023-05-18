@@ -24,6 +24,10 @@ export default function Mode({walletAd}) {
     height: '150px',
   };
 
+  let green = {
+   color: "green"
+  };
+
   async function onFileChange(e) {
     // if (!handle) return
     const image = e.target.files[0];
@@ -73,7 +77,9 @@ export default function Mode({walletAd}) {
               throw new Error("Transaction failed");
           } else {
             setStatus("Successful!")
-            handleClose();
+            setTimeout(() => {
+              handleClose()
+            }, 3000);
           }
 
       } catch (error) {
@@ -81,6 +87,9 @@ export default function Mode({walletAd}) {
           setStatus("Transaction cancelled")
         }
         setStatus("Successful!")
+        setTimeout(() => {
+          handleClose()
+        }, 3000);
       } finally {
   
       }
@@ -125,7 +134,7 @@ export default function Mode({walletAd}) {
                         }
               </div>
           </div>
-          <>{status}</>
+          <p className="mt-5" style={green}>{status}</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
