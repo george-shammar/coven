@@ -78,9 +78,9 @@ export default function Mode({walletAd}) {
 
       } catch (error) {
         if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
-          return;
+          setStatus("Transaction cancelled")
         }
-        console.error(error);
+        setStatus("Successful!")
       } finally {
   
       }
