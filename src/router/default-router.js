@@ -44,29 +44,6 @@ import BlogDetail from "../views/dashboard/blog/blogdetail";
 import Email from "../views/dashboard/email/email";
 import EmailCompose from "../views/dashboard/email/email-compose";
 
-//ui-kit
-import UiAlerts from "../views/dashboard/ui-kit/ui-alerts";
-import UiBadges from "../views/dashboard/ui-kit/ui-badges";
-import UiBreadcrumbs from "../views/dashboard/ui-kit/ui-breadcrumb";
-import UiButtons from "../views/dashboard/ui-kit/ui-buttons";
-import UiCards from "../views/dashboard/ui-kit/ui-cards";
-import UiCarousels from "../views/dashboard/ui-kit/ui-carousel";
-import UiColors from "../views/dashboard/ui-kit/ui-color";
-import UiDropdowns from "../views/dashboard/ui-kit/ui-dropdowns";
-import UiEmbedVideos from "../views/dashboard/ui-kit/ui-embed-video";
-import UiGrids from "../views/dashboard/ui-kit/ui-grid";
-import UiImages from "../views/dashboard/ui-kit/ui-images";
-import UiListGroups from "../views/dashboard/ui-kit/ui-list-groups";
-import UiModals from "../views/dashboard/ui-kit/ui-modal";
-import UiNotifications from "../views/dashboard/ui-kit/ui-notifications";
-import UiOffcanvas from "../views/dashboard/ui-kit/ui-offcanvas";
-import UiPaginations from "../views/dashboard/ui-kit/ui-pagination";
-import UiPopovers from "../views/dashboard/ui-kit/ui-popovers";
-import UiProgressbars from "../views/dashboard/ui-kit/ui-progressbars";
-import UiTabs from "../views/dashboard/ui-kit/ui-tabs";
-import UiTooltips from "../views/dashboard/ui-kit/ui-tooltips";
-import UiTypographys from "../views/dashboard/ui-kit/ui-typography";
-
 // extrapages
 import Pricing from "../views/dashboard/extrapages/pricing";
 import Pricing1 from "../views/dashboard/extrapages/pricing1";
@@ -231,91 +208,7 @@ export const DefaultRouter = [
     path: "dashboard/app/admin",
     element: <Admin />,
   },
-  // Ui-kit
-  {
-    path: "dashboard/ui-kit/ui-alerts",
-    element: <UiAlerts />,
-  },
-  {
-    path: "dashboard/ui-kit/ui-badges",
-    element: <UiBadges />,
-  },
-  {
-    path: "dashboard/ui-kit/ui-breadcrumb",
-    element: <UiBreadcrumbs />,
-  },
-  {
-    path: "dashboard/ui-kit/ui-buttons",
-    element: <UiButtons />,
-  },
-  {
-    path: "dashboard/ui-kit/ui-cards",
-    element: <UiCards />,
-  },
-  {
-    path: "dashboard/ui-kit/ui-carousel",
-    element: <UiCarousels />,
-  },
-  {
-    path: "dashboard/ui-kit/ui-color",
-    element: <UiColors />,
-  },
-  {
-    path: "dashboard/ui-kit/ui-dropdowns",
-    element: <UiDropdowns />,
-  },
-  {
-    path: "dashboard/ui-kit/ui-embed-video",
-    element: <UiEmbedVideos />,
-  },
-  {
-    path: "dashboard/ui-kit/ui-grid",
-    element: <UiGrids />,
-  },
-  {
-    path: "dashboard/ui-kit/ui-images",
-    element: <UiImages />,
-  },
-  {
-    path: "dashboard/ui-kit/ui-list-groups",
-    element: <UiListGroups />,
-  },
-  {
-    path: "dashboard/ui-kit/ui-modal",
-    element: <UiModals />,
-  },
-  {
-    path: "dashboard/ui-kit/ui-notifications",
-    element: <UiNotifications />,
-  },
-  {
-    path: "dashboard/ui-kit/ui-offcanvas",
-    element: <UiOffcanvas />,
-  },
-  {
-    path: "dashboard/ui-kit/ui-pagination",
-    element: <UiPaginations />,
-  },
-  {
-    path: "dashboard/ui-kit/ui-popovers",
-    element: <UiPopovers />,
-  },
-  {
-    path: "dashboard/ui-kit/ui-progressbars",
-    element: <UiProgressbars />,
-  },
-  {
-    path: "dashboard/ui-kit/ui-tabs",
-    element: <UiTabs />,
-  },
-  {
-    path: "dashboard/ui-kit/ui-tooltips",
-    element: <UiTooltips />,
-  },
-  {
-    path: "dashboard/ui-kit/ui-typography",
-    element: <UiTypographys />,
-  },
+  
   // Table
   {
     path: "dashboard/table/data-table",
