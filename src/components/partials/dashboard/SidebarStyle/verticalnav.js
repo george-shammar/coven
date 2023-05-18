@@ -74,7 +74,7 @@ const VerticalNav = React.memo(() => {
     return (
         <React.Fragment>
             <Accordion as="ul" className="navbar-nav iq-main-menu" id="sidebar-menu">
-                <li className="nav-item static-item mt-xs-5 pt-xs-5">
+                <li className="nav-item static-item mt-3">
                     <Link className="nav-link static-item disabled" to="#" tabIndex="-1">
                         <span className="default-icon">Total Users: {totalUsers}</span>
                         <span className="mini-icon" data-bs-toggle="tooltip" title="Social" data-bs-placement="right">-</span>
