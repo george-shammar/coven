@@ -79,8 +79,11 @@ const Header = () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
+
     try {
-      const transaction = await contract.getProfile(9);
+      const tx = await contract.tokenOfOwnerByIndex(walletAddress, 0)
+      const tokenId = parseInt(tx._hex);
+      const transaction = await contract.getProfile(tokenId);
       setProfileHandle(transaction.handle);
       setProfileImage(transaction.imageURI);  
     } catch (error) {
