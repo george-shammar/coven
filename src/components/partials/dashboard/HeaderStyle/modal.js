@@ -39,38 +39,37 @@ export default function Mode({walletAd}) {
 
 
   async function createProfile() {
-    // const provider = new ethers.providers.Web3Provider(window.ethereum);
-    // const signer = provider.getSigner();
-    // const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
 
-    //   try {
-    //     const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
-    //     const inputStruct = {
-    //       to: walletAd,
-    //       handle: handle,
-    //       imageURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
-    //       followModule: ZERO_ADDRESS,
-    //       followModuleInitData: [],
-    //       followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
-    //     };
+      try {
+        const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
+        const inputStruct = {
+          to: walletAd,
+          handle: handle,
+          imageURI: imageUrl,
+          followModule: ZERO_ADDRESS,
+          followModuleInitData: [],
+          followNFTURI: 'https://ipfs.io/ipfs/QmTFLSXdEQ6qsSzaXaCSNtiv6wA56qq87ytXJ182dXDQJS',
+        };
+        console.log(inputStruct)
+        // const transaction = await contract.createProfile(inputStruct);
+        // const receipt = await transaction.wait();
+        //   if (receipt.status === 0) {
+        //       throw new Error("Transaction failed");
+        //   } else {
+        //   console.log(receipt.status)
+        //   }
 
-    //     const transaction = await contract.createProfile(inputStruct);
-    //     const receipt = await transaction.wait();
-    //       if (receipt.status === 0) {
-    //           throw new Error("Transaction failed");
-    //       } else {
-    //       console.log(receipt.status)
-    //       }
-
-    //   } catch (error) {
-    //     if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
-    //       return;
-    //     }
-    //     console.error(error);
-    //   } finally {
+      } catch (error) {
+        if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
+          return;
+        }
+        console.error(error);
+      } finally {
   
-    //   }
-    console.log(handle)
+      }
       handleClose();
     };
    
@@ -90,13 +89,10 @@ export default function Mode({walletAd}) {
           <Modal.Title>Create Profile</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>
-            A new way to register... Every profile is an NFT!
-          </p>
           <div>
             <div>
-              <label>Wallet Address *</label>
-              <input className="form-control form-control-sm" type="text" placeholder="wallet address"/>
+              <label>Connected Wallet Address: {walletAd}</label>
+              {/* <input className="form-control form-control-sm" type="text" placeholder="wallet address"/> */}
             </div>
             <div className="pt-3">
               <label>Profile Handle *</label>
@@ -106,7 +102,7 @@ export default function Mode({walletAd}) {
                 placeholder="profile handle"/>
             </div>
             
-            
+            <label>Profile Image *</label>
             <input className="pt-3" type="file" onChange={onFileChange}/>
           </div>
           
