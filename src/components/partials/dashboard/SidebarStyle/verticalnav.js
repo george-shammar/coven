@@ -884,7 +884,7 @@ const VerticalNav = React.memo(() => {
                             error_outline
                         </i>
                         </OverlayTrigger>
-                        <span className="item-name">Icons</span>
+                        {/* <span className="item-name">Icons</span> */}
                         <i className="right-icon material-symbols-outlined">chevron_right</i>
                     </CustomToggle>
                     <Accordion.Collapse eventKey="sidebar-icons">
