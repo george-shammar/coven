@@ -54,14 +54,6 @@ const VerticalNav = React.memo(() => {
            const value = transaction._hex;
            const num = parseInt(value);
            setTotalUsers(num);
-            //   if (receipt.status === 0) {
-            //       throw new Error("Transaction failed");
-            //   } else {
-            //     setStatus("Successful!")
-            //     setTimeout(() => {
-            //       handleClose()
-            //     }, 3000);
-            //   }
     
           } catch (error) {
             
