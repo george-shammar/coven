@@ -35,8 +35,42 @@ const VerticalNav = React.memo(() => {
     //location
     let location = useLocation();
 
-    async function totalUsers() {
+    
+  useEffect(() => {
+    (async() => {
+      
+    }) ()
+  }, []);
 
+
+    async function totalUsers() {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
+
+        try {
+            const transaction = await contract.totalSupply();
+            const receipt = await transaction.wait();
+              if (receipt.status === 0) {
+                  throw new Error("Transaction failed");
+              } else {
+                setStatus("Successful!")
+                setTimeout(() => {
+                  handleClose()
+                }, 3000);
+              }
+    
+          } catch (error) {
+            if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
+              setStatus("Transaction cancelled")
+            }
+            setStatus("Successful!")
+            setTimeout(() => {
+              handleClose()
+            }, 3000);
+          } finally {
+      
+          }
     }
 
 
