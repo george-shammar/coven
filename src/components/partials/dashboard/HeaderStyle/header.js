@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { connectWallet, getCurrentWalletConnected } from "../../../../utils/wallet";
 import Mode from "./modal"
+import { ethers } from "ethers";
+import LensHubAddress from "../../../../contracts/contract-address.json";
+import LensHubArtifact from "../../../../contracts/LensHub.json";
 
 import {
   Dropdown,
@@ -68,6 +71,10 @@ const Header = () => {
           }
       });
       } 
+  }
+
+  async function profile() {
+    
   }
 
   const minisidebar = () => {
