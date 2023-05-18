@@ -1,4 +1,7 @@
 import React, { useState, useContext} from 'react'
+import { ethers } from "ethers";
+import LensHubAddress from "../../../../contracts/contract-address.json";
+import LensHubArtifact from "../../../../contracts/LensHub.json";
 
 //router
 import { Link, useLocation } from 'react-router-dom'
@@ -31,6 +34,10 @@ const VerticalNav = React.memo(() => {
     const [totalUsers, setTotalUsers]= useState('')
     //location
     let location = useLocation();
+
+    async function totalUsers() {
+
+    }
 
 
     return (
