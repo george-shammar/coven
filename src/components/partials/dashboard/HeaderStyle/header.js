@@ -39,7 +39,8 @@ import CustomToggle from "../../../dropdowns";
 const Header = () => {
   const [walletAddress, setWallet] = useState("");
   const [status, setStatus] = useState("");
-  // const [profile, setProfile] = useState("");
+  const [profileHandle, setProfileHandle] = useState("");
+  const [profileImage, setProfileImage] = useState("");
 
   useEffect(() => {
     (async() => {
@@ -49,6 +50,7 @@ const Header = () => {
         setStatus("Click the wallet icon before signing up");
       }
       addWalletListener();
+      profile();
     }) ()
   }, []);
 
@@ -77,6 +79,15 @@ const Header = () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
+    try {
+      const transaction = await contract.getProfile(9);
+      setProfileHandle(transaction.handle);
+      console.log(transaction.handle)   
+    } catch (error) {
+     
+    } finally {
+
+    }
   }
 
   const minisidebar = () => {
