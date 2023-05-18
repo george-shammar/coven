@@ -82,7 +82,7 @@ const Header = () => {
     try {
       const transaction = await contract.getProfile(9);
       setProfileHandle(transaction.handle);
-      console.log(transaction.handle)   
+      setProfileImage(transaction.imageURI);  
     } catch (error) {
      
     } finally {
@@ -1246,7 +1246,7 @@ const Header = () => {
                     loading="lazy"
                   />
                   <div className="caption d-none d-lg-block">
-                    <h6 className="mb-0 line-height">shammer</h6>
+                    <h6 className="mb-0 line-height">{profileHandle}</h6>
                   </div>
                 </Dropdown.Toggle>
                 <Dropdown.Menu className="sub-drop caption-menu">
