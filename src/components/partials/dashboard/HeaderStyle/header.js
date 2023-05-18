@@ -53,7 +53,7 @@ const Header = () => {
       profile();
     }) ()
   }, []);
-
+// eslint-disable-next-line 
   // connect wallet 
   const connectWalletPressed = async () => {
       const walletResponse = await connectWallet();
