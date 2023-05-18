@@ -58,7 +58,7 @@ const Index = () => {
                             <Card id="post-modal-data" className="card-block card-stretch card-height">
                                 <div className="card-header d-flex justify-content-between">
                                     <div className="header-title">
-                                        <h4 className="card-title">Create Post</h4>
+                                        <h4 className="card-title">Publish Post</h4>
                                     </div>
                                 </div>
                                 <Card.Body >
@@ -122,7 +122,7 @@ const Index = () => {
                                                 <img src={user1} alt="user1" className="avatar-60 rounded-circle img-fluid"/>
                                             </div>
                                             <form className="post-text ms-3 w-100 "  data-bs-toggle="modal" data-bs-target="#post-modal">
-                                            <input type="text" className="form-control rounded" placeholder="Write something here..." style={{border:"none"}}/>
+                                            <textarea className="form-control rounded" placeholder="Write something here..." style={{border:"none"}}></textarea>
                                         </form>
                                         </div>
                                         <hr/>
@@ -135,30 +135,30 @@ const Index = () => {
                                                 <div className="bg-soft-primary rounded p-2 pointer me-3"><Link to="#"></Link>
                                                 <img src={img2} alt="icon" className="img-fluid"/> Tag Friend</div>
                                             </li>
-                                            <li className="col-md-6 mb-3">
+                                            {/* <li className="col-md-6 mb-3">
                                                 <div className="bg-soft-primary rounded p-2 pointer me-3"><Link to="#"></Link>
                                                 <img src={img3} alt="icon" className="img-fluid"/> Feeling/Activity</div>
-                                            </li>
-                                            <li className="col-md-6 mb-3">
+                                            </li> */}
+                                            {/* <li className="col-md-6 mb-3">
                                                 <div className="bg-soft-primary rounded p-2 pointer me-3"><Link to="#"></Link>
                                                 <img src={img4} alt="icon" className="img-fluid"/> Check in</div>
-                                            </li>
-                                            <li className="col-md-6 mb-3">
+                                            </li> */}
+                                            {/* <li className="col-md-6 mb-3">
                                                 <div className="bg-soft-primary rounded p-2 pointer me-3"><Link to="#"></Link>
                                                 <img src={img5} alt="icon" className="img-fluid"/> Live Video</div>
-                                            </li>
+                                            </li> */}
                                             <li className="col-md-6 mb-3">
                                                 <div className="bg-soft-primary rounded p-2 pointer me-3"><Link to="#"></Link>
                                                 <img src={img6} alt="icon" className="img-fluid"/> Gif</div>
                                             </li>
-                                            <li className="col-md-6 mb-3">
+                                            {/* <li className="col-md-6 mb-3">
                                                 <div className="bg-soft-primary rounded p-2 pointer me-3"><Link to="#"></Link>
                                                 <img src={img7} alt="icon" className="img-fluid"/> Watch Party</div>
                                             </li>
                                             <li className="col-md-6 mb-3">
                                                 <div className="bg-soft-primary rounded p-2 pointer me-3"><Link to="#"></Link>
                                                 <img src={img8} alt="icon" className="img-fluid"/> Play with Friends</div>
-                                            </li>
+                                            </li> */}
                                         </ul>
                                         <hr/>
                                         <div className="other-option">
