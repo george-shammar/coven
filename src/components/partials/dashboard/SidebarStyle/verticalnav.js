@@ -1,4 +1,4 @@
-import React, { useState, useContext} from 'react'
+import React, { useState, useContext, useEffect} from 'react'
 import { ethers } from "ethers";
 import LensHubAddress from "../../../../contracts/contract-address.json";
 import LensHubArtifact from "../../../../contracts/LensHub.json";
@@ -38,12 +38,12 @@ const VerticalNav = React.memo(() => {
     
   useEffect(() => {
     (async() => {
-      
+      users();
     }) ()
   }, []);
 
 
-    async function totalUsers() {
+    async function users() {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
         const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
@@ -51,23 +51,18 @@ const VerticalNav = React.memo(() => {
         try {
             const transaction = await contract.totalSupply();
             const receipt = await transaction.wait();
-              if (receipt.status === 0) {
-                  throw new Error("Transaction failed");
-              } else {
-                setStatus("Successful!")
-                setTimeout(() => {
-                  handleClose()
-                }, 3000);
-              }
+            console.log(receipt)
+            //   if (receipt.status === 0) {
+            //       throw new Error("Transaction failed");
+            //   } else {
+            //     setStatus("Successful!")
+            //     setTimeout(() => {
+            //       handleClose()
+            //     }, 3000);
+            //   }
     
           } catch (error) {
-            if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
-              setStatus("Transaction cancelled")
-            }
-            setStatus("Successful!")
-            setTimeout(() => {
-              handleClose()
-            }, 3000);
+            
           } finally {
       
           }
