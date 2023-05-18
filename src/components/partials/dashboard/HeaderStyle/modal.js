@@ -1,10 +1,10 @@
 import {useState} from "react";
 import {Modal, Button} from 'react-bootstrap';
-import { NFTStorage, File } from 'nft.storage'
+// import { NFTStorage, File } from 'nft.storage'
 import { ethers } from "ethers";
 import LensHubAddress from "../../../../contracts/contract-address.json";
 import LensHubArtifact from "../../../../contracts/LensHub.json";
-const NFT_STORAGE_KEY  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDMyNTlEMWEzNTNEMzgyNjQ4MDVmNkY4Y2NjMTY0RThFODQzM0I0MDYiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY4NDM2MjM4MzEyMiwibmFtZSI6ImNvdmVuIn0.zGwkPzBzjxHdTf8IeOZrHH1U3_xB6UanjXXLPkdCduU"
+// const NFT_STORAGE_KEY  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDMyNTlEMWEzNTNEMzgyNjQ4MDVmNkY4Y2NjMTY0RThFODQzM0I0MDYiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY4NDM2MjM4MzEyMiwibmFtZSI6ImNvdmVuIn0.zGwkPzBzjxHdTf8IeOZrHH1U3_xB6UanjXXLPkdCduU"
 
 const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
@@ -31,7 +31,7 @@ export default function Mode({walletAd}) {
   async function onFileChange(e) {
     // if (!handle) return
     const image = e.target.files[0];
-
+    console.log(image)
     // // const client = new NFTStorage({ token: NFT_STORAGE_KEY });
     // // const metadata = await client.store({
     // //   name: handle,

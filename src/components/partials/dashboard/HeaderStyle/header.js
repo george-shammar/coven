@@ -36,7 +36,7 @@ import CustomToggle from "../../../dropdowns";
 const Header = () => {
   const [walletAddress, setWallet] = useState("");
   const [status, setStatus] = useState("");
-  const [profile, setProfile] = useState("");
+  // const [profile, setProfile] = useState("");
 
   useEffect(() => {
     (async() => {
@@ -1226,7 +1226,7 @@ const Header = () => {
                     loading="lazy"
                   />
                   <div className="caption d-none d-lg-block">
-                    <h6 className="mb-0 line-height">{profile}</h6>
+                    <h6 className="mb-0 line-height">shammer</h6>
                   </div>
                 </Dropdown.Toggle>
                 <Dropdown.Menu className="sub-drop caption-menu">
