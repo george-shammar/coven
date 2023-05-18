@@ -50,8 +50,10 @@ const VerticalNav = React.memo(() => {
 
         try {
             const transaction = await contract.totalSupply();
-            const receipt = await transaction.wait();
-            console.log(receipt)
+           // const receipt = await transaction.wait();
+           const value = transaction._hex;
+           const num = parseInt(value);
+           setTotalUsers(num);
             //   if (receipt.status === 0) {
             //       throw new Error("Transaction failed");
             //   } else {
@@ -72,9 +74,9 @@ const VerticalNav = React.memo(() => {
     return (
         <React.Fragment>
             <Accordion as="ul" className="navbar-nav iq-main-menu" id="sidebar-menu">
-                <li className="nav-item static-item">
+                <li className="nav-item static-item mt-xs-5 pt-xs-5">
                     <Link className="nav-link static-item disabled" to="#" tabIndex="-1">
-                        <span className="default-icon">Total Users:</span>
+                        <span className="default-icon">Total Users: {totalUsers}</span>
                         <span className="mini-icon" data-bs-toggle="tooltip" title="Social" data-bs-placement="right">-</span>
                     </Link>
                 </li>
