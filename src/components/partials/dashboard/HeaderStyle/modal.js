@@ -8,6 +8,7 @@ const NFT_STORAGE_KEY  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6Z
 
 const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
+
 export default function Mode({walletAd}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -15,8 +16,9 @@ export default function Mode({walletAd}) {
   const [imageUrl, setImageUrl] = useState("");
   const [formInput, updateFormInput] = useState({handle:""});
 
+  const {handle} = formInput;
+
   async function onFileChange(e) {
-    const {handle} = formInput;
     if (!handle) return
     const image = e.target.files[0];
     // const client = new NFTStorage({ token: NFT_STORAGE_KEY });
@@ -37,9 +39,9 @@ export default function Mode({walletAd}) {
 
 
   async function createProfile() {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
-    const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
+    // const provider = new ethers.providers.Web3Provider(window.ethereum);
+    // const signer = provider.getSigner();
+    // const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
 
     //   try {
     //     const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
@@ -68,6 +70,7 @@ export default function Mode({walletAd}) {
     //   } finally {
   
     //   }
+    console.log(handle)
       handleClose();
     };
    
@@ -97,7 +100,10 @@ export default function Mode({walletAd}) {
             </div>
             <div className="pt-3">
               <label>Profile Handle *</label>
-              <input className="form-control form-control-sm" type="text" placeholder="profile handle"/>
+              <input  onChange={e => updateFormInput({...formInput, handle: e.target.value})}
+                className="form-control form-control-sm" 
+                type="text" 
+                placeholder="profile handle"/>
             </div>
             
             
@@ -109,7 +115,7 @@ export default function Mode({walletAd}) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={onFileUpload}>
+          <Button variant="primary" onClick={createProfile}>
             Mint Profile NFT!
           </Button>
         </Modal.Footer>
