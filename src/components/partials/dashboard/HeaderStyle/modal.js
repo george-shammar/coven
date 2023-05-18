@@ -12,134 +12,34 @@ export default function Mode({walletAd}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [uploadedFile, setUploadedFile] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
   const [formInput, updateFormInput] = useState({handle:""});
 
   async function onFileChange(e) {
+    const {handle} = formInput;
+    if (!handle) return
     const image = e.target.files[0];
-    const client = new NFTStorage({ token: NFT_STORAGE_KEY });
-    const metadata = await client.store({
-      name: "jango",
-      description: "covven",
-      image
-    });
+    // const client = new NFTStorage({ token: NFT_STORAGE_KEY });
+    // const metadata = await client.store({
+    //   name: "jango",
+    //   description: "covven",
+    //   image
+    // });
 
-      const metadataURI = metadata.url
-      const profileImage = metadataURI.image
+      // const metadataURI = metadata.url
+      // const profileImage = metadataURI.image
 
-      console.log(profileImage);
 
-      // const profileImage = "ipfs//:bafybeiawysqru7veenzbdyernf3aequkh2ffdc6gajwwzbpffs5nimmb5q/feed.png";
+      const profileImage = "ipfs//:bafybeiawysqru7veenzbdyernf3aequkh2ffdc6gajwwzbpffs5nimmb5q/feed.png";
+      setImageUrl(profileImage);
       // const newUrl = `https://ipfs.io/ipfs/${profileImage.replace("ipfs//:","")}`;
-
-    // const editedUrl = profileImage.substring(6);
-    // const prefix = "https://ipfs.io/ipfs"
-    // const imageUrl = `${prefix}${editedUrl}`;
-    
-    // console.log(newUrl)
-    //   //"https://ipfs.io/ipfs/bafyreie3kfmtgv6ifdk2qk5evmkmdyhu3ricdxumdt2bcncninstjfarhm/metadata.json"
-    //   // https://ipfs.io/ipfs/bafybeiawysqru7veenzbdyernf3aequkh2ffdc6gajwwzbpffs5nimmb5q/feed.png
-
-    //   const json = {"name":"jango","description":"covven","image":"ipfs://bafybeiawysqru7veenzbdyernf3aequkh2ffdc6gajwwzbpffs5nimmb5q/feed.png"}
-
-    
 }
 
-  async function onFileUpload(e) {
-    const file = e.target.files[0];
-
-    // const pinataApiKey = process.env.REACT_APP_PINATA_API_KEY
-    // const pinataSecretApiKey = process.env.REACT_APP_PINATA_API_SECRET
-    // const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
-  
-    // // Create an object of formData
-    // const formData = new FormData();
-   
-    // // Update the formData object
-    // formData.append(
-    //   "myFile",
-    //   file
-    // );
-    // console.log("start pinata")
-    // try {
-    //   const response = await axios.post(url,
-    //     formData,
-    //     {
-    //       headers: {
-    //         'Content-Type': `multipart/form-data; boundary= ${formData._boundary}`,
-    //         'pinata_api_key': pinataApiKey,
-    //         'pinata_secret_api_key': pinataSecretApiKey
-    //       }
-    //     });
-    //   console.log("is response possible?");
-    //   console.log(response);
-    //   console.log("yes it is?");
-    // } catch (error) {
-    //   console.log("error it is");
-    //   console.log(error);
-    // }
-        
-    // Details of the uploaded file
-   // axios.post("api/uploadfile", formData);
-   
-  };
-
-  // function onFileUpload() {
-  //   // Create an object of formData
-  //   // const formData = new FormData();
-   
-  //   // Update the formData object
-  //   // formData.append(
-  //   //   "myFile",
-  //   //   fileUrl,
-  //   //   fileUrl.name
-  //   // );
-   
-  //   // Details of the uploaded file
-   
-  //   // Request made to the backend api
-  //   // Send formData object
-  //   // axios.post("api/uploadfile", formData);
-  // };
 
   async function createProfile() {
-    // const {handle} = formInput;
-    // if (!handle) return
-    // if (!fileUrl) {
-    //   fileUrl = 'https://ipfs.io/ipfs/QmY9dUwYu67puaWBMxRKW98LPbXCznPwHUbhX5NeWnCJbX'
-    // }
-
-  //    const pinataApiKey = process.env.REACT_APP_PINATA_API_KEY
-  //    const pinataSecretApiKey = process.env.REACT_APP_PINATA_API_SECRET
-  //    const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
-  // // //we gather a local file from the API for this example, but you can gather the file from anywhere
-  //    let data = new FormData();
-     
-  //    data.append('file', fs.createReadStream("../../../../assets/images/user/1.jpg"));
-  //    return axios.post(url,
-  //         data,
-  //             {
-  //               headers: {
-  //                 'Content-Type': `multipart/form-data; boundary= ${data._boundary}`,
-  //                 'pinata_api_key': pinataApiKey,
-  //                 'pinata_secret_api_key': pinataSecretApiKey
-  //            }
-  //          }
-     
-  //     ).then(function (response) {
-  //         console.log(response);
-  //     }).catch(function (error) {
-  //          console.log(error);
-  //      });
-    
-
-    // const data = JSON.stringify({
-    //   handle, image: fileUrl
-    // })
-
-    // const provider = new ethers.providers.Web3Provider(window.ethereum);
-    // const signer = provider.getSigner();
-    // const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(LensHubAddress.LensHub, LensHubArtifact.abi, signer);
 
     //   try {
     //     const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
