@@ -1240,7 +1240,7 @@ const Header = () => {
                   variant="d-flex align-items-center"
                 >
                   <Image
-                    src={user1}
+                    src={profileImage}
                     className="img-fluid rounded-circle me-3"
                     alt="user"
                     loading="lazy"
@@ -1253,7 +1253,7 @@ const Header = () => {
                   <Card className="shadow-none m-0">
                     <Card.Header>
                       <div className="header-title">
-                        <h5 className="mb-0 ">Hello Bni Cyst</h5>
+                        <h5 className="mb-0 ">Hello, {profileHandle}</h5>
                       </div>
                     </Card.Header>
                     <Card.Body className="p-0 ">
