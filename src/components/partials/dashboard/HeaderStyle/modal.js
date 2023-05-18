@@ -18,7 +18,11 @@ export default function Mode({walletAd}) {
   const [status, setStatus] = useState("");
 
   // const {handle} = formInput;
-
+  let styles = {
+    margin: '20px',
+    width: '250px',
+    height: '150px',
+  };
 
   async function onFileChange(e) {
     // if (!handle) return
@@ -34,7 +38,7 @@ export default function Mode({walletAd}) {
     //   // const metadataURI = metadata.url
     //   // const profileImage = metadataURI.image
 
-    const profileImage = "ipfs//:bafybeiawysqru7veenzbdyernf3aequkh2ffdc6gajwwzbpffs5nimmb5q/feed.png";
+    const profileImage = "https://ipfs.io/ipfs/bafybeiawysqru7veenzbdyernf3aequkh2ffdc6gajwwzbpffs5nimmb5q/feed.png";
     setFileUrl(profileImage);
     //   // const newUrl = `https://ipfs.io/ipfs/${profileImage.replace("ipfs//:","")}`;
 }
@@ -69,6 +73,7 @@ export default function Mode({walletAd}) {
               throw new Error("Transaction failed");
           } else {
             setStatus("Successful!")
+            handleClose();
           }
 
       } catch (error) {
@@ -79,7 +84,6 @@ export default function Mode({walletAd}) {
       } finally {
   
       }
-      // handleClose();
     };
    
 
@@ -113,6 +117,13 @@ export default function Mode({walletAd}) {
             
             <label>Profile Image *</label>
             <input className="pt-3" type="file" onChange={onFileChange}/>
+              <div>
+                        {
+                            fileUrl && (
+                                <img style={styles} src={fileUrl} alt=""/>
+                            )
+                        }
+              </div>
           </div>
           <>{status}</>
         </Modal.Body>
